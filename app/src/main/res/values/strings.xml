@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Ololaa</string>
+    <string name="license_plate_number">License Plate Number</string>
+    <string name="available_tonage">Available Tonage</string>
+    <string name="driver">Driver</string>
+    <string name="driver">Driver</string>
+    <string name="trailer">Trailer</string>
+    <string name="truck_photo">Truck Photo</string>
+    <string name="insurance_sticker">Insurance Sticker</string>
+    <string name="ntsa_certificate_number">NTSA Certificate Number</string>
 </resources>

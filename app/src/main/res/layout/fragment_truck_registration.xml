@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.Ololaa.ololaa.truck.TruckViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/license_plate_number"
+                android:text="@string/license_plate_number"
+                android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorLicensePlate}"
+                app:errorEnabled="true"
+
+                >
+
+                <EditText
+                    android:id="@+id/licensePlate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text"
+                    android:text="@={viewModel.licensePlate}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/driver"
+                android:labelFor="@+id/driver"
+                android:text="@string/driver"
+                android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorDrivers}"
+                app:errorEnabled="true"
+
+                >
+
+                <EditText
+                    android:id="@+id/driver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text"
+                    android:text="@{viewModel.driver}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/available_tonage"
+                android:text="@string/available_tonage"
+                android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorAvailableTonage}"
+                app:errorEnabled="true">
+
+                <EditText
+                    android:id="@+id/availableTonage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text"
+                    android:text="@={viewModel.availableTonage}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/trailer"
+                android:value="@={viewModel.trailer}" />
+
+            <android.support.design.button.MaterialButton
+                android:id="@+id/upload_truck_photo"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="@string/truck_photo" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/truck_photo"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:visibility="@{viewModel.showTruckPhoto? View.VISIBLE : View.GONE}" />
+
+            <android.support.design.button.MaterialButton
+                android:id="@+id/upload_insurance_sticker"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="@string/insurance_sticker" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/insurance_sticker"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:visibility="@{viewModel.showInsuranceSticker? View.VISIBLE : View.GONE}" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/ntsa_certificate_number"
+                android:text="@string/ntsa_certificate_number"
+                android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorNtsa}"
+                app:errorEnabled="true">
+
+                <EditText
+                    android:id="@+id/ntsa_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text"
+                    android:text="@={viewModel.ntsa}"
+                    tools:ignore="TextFields" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>
