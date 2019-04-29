@@ -15,4 +15,10 @@
     <string name="upload_passport_photo">Upload Passport Photo</string>
     <string name="id_number">ID Number</string>
     <string name="submit">submit</string>
+    <string name="select_tuck">Select Tuck</string>
+    <string name="truck">Truck</string>
+    <string name="destination">Destination</string>
+    <string name="starting_location">Starting Location</string>
+    <string name="first_available_date">1st Available Date</string>
+    <string name="last_available_date">Last Available Date</string>
 </resources>

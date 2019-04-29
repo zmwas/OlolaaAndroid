@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.Ololaa.ololaa.trip.TripViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/select_tuck"
+                android:text="@string/truck"
+                android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorTruck}"
+                app:errorEnabled="true"
+
+                >
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/truck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/truck"
+                    android:inputType="text"
+
+                    android:text="@={viewModel.truck}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/driver"
+                android:labelFor="@+id/driver"
+                android:text="@string/driver"
+                android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorDriver}"
+                app:errorEnabled="false">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/driver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/driver"
+                    android:inputType="text"
+                    android:text="@{viewModel.driver}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/starting_location"
+                android:text="@string/starting_location"
+                android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorStartingLocation}"
+                app:errorEnabled="true">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/startingLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/starting_location"
+                    android:inputType="text"
+                    android:text="@={viewModel.startingLocation}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/destination"
+                android:text="@string/destination"
+                android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorDestination}"
+                app:errorEnabled="true">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/destination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/destination"
+                    android:inputType="text"
+                    android:text="@={viewModel.destination}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/available_tonage"
+                android:text="@string/available_tonage"
+                android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorAvailableTonage}"
+                app:errorEnabled="true">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/availableTonage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/available_tonage"
+                    android:inputType="text"
+                    android:text="@={viewModel.availableTonage}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/first_date_Til"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/first_available_date"
+                android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorFirstAvailableDate}"
+                app:errorEnabled="true"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/first_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/first_available_date"
+                    android:text="@={viewModel.firstAvailableDate}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/last_date_Til"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/last_available_date"
+                android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorLastAvailableDate}"
+                app:errorEnabled="true"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/last_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/last_available_date"
+                    android:text="@={viewModel.lastAvailableDate}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.button.MaterialButton
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/submit" />
+        </LinearLayout>
+    </ScrollView>
+</layout>
