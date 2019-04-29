@@ -8,4 +8,11 @@
     <string name="truck_photo">Truck Photo</string>
     <string name="insurance_sticker">Insurance Sticker</string>
     <string name="ntsa_certificate_number">NTSA Certificate Number</string>
+    <string name="name">Name</string>
+    <string name="truck_allocated">Truck Allocated</string>
+    <string name="driving_license_number">Driving License Number</string>
+    <string name="driving_license_type">Driving License Type</string>
+    <string name="upload_passport_photo">Upload Passport Photo</string>
+    <string name="id_number">ID Number</string>
+    <string name="submit">submit</string>
 </resources>
