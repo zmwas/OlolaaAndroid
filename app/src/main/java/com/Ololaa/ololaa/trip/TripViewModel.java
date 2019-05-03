@@ -1,4 +1,4 @@
-package com.Ololaa.ololaa.trip;
+package com.ololaa.ololaa.trip;
 
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;

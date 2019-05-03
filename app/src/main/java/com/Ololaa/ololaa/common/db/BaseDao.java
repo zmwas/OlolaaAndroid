@@ -1,4 +1,4 @@
-package com.Ololaa.ololaa.db;
+package com.ololaa.ololaa.common.db;
 
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;

@@ -1,6 +1,6 @@
-package com.Ololaa.ololaa.dependencyInjection;
+package com.ololaa.ololaa.common.dependencyInjection;
 
-import com.Ololaa.ololaa.OlolaaApp;
+import com.ololaa.ololaa.OlolaaApp;
 
 import javax.inject.Singleton;
 

@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.Ololaa.ololaa.truck.TruckViewModel" />
+            type="com.ololaa.ololaa.truck.TruckViewModel" />
     </data>
 
     <ScrollView
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="@string/trailer"
-                android:value="@={viewModel.trailer}" />
+                android:checked="@={viewModel.trailer}" />
 
             <android.support.design.button.MaterialButton
                 android:id="@+id/upload_truck_photo"

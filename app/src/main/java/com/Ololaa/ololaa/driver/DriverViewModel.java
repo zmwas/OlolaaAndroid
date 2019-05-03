@@ -1,4 +1,4 @@
-package com.Ololaa.ololaa.driver;
+package com.ololaa.ololaa.driver;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
@@ -14,7 +14,7 @@ public class DriverViewModel extends ViewModel {
     public ObservableField<String> drivingLicenseType = new ObservableField<>();
     public ObservableField<String> errorDrivingLicenseType = new ObservableField<>();
     public ObservableField<String> idNumber = new ObservableField<>();
-    public ObservableField<String> erroridNumber = new ObservableField<>();
+    public ObservableField<String> errorIdNumber = new ObservableField<>();
     public MutableLiveData<Boolean> showPassportPhoto = new MutableLiveData<>();
 
 

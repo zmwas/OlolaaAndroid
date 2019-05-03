@@ -1,4 +1,4 @@
-package com.Ololaa.ololaa;
+package com.ololaa.ololaa;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;

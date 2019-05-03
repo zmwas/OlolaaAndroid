@@ -1,6 +1,6 @@
-package com.Ololaa.ololaa.dependencyInjection;
+package com.ololaa.ololaa.common.dependencyInjection;
 
-import com.Ololaa.ololaa.MainActivity;
+import com.ololaa.ololaa.MainActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;

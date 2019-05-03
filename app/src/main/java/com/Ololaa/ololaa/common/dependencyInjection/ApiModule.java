@@ -1,8 +1,8 @@
-package com.Ololaa.ololaa.dependencyInjection;
+package com.ololaa.ololaa.common.dependencyInjection;
 
 
-import com.Ololaa.ololaa.BuildConfig;
-import com.Ololaa.ololaa.api.ApiService;
+import com.ololaa.ololaa.BuildConfig;
+import com.ololaa.ololaa.common.api.ApiService;
 
 import java.util.concurrent.TimeUnit;
 

@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.Ololaa.ololaa.driver.DriverViewModel" />
+            type="com.ololaa.ololaa.driver.DriverViewModel" />
     </data>
 
     <ScrollView

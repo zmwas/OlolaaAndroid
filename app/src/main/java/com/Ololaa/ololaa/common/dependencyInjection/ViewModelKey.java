@@ -1,4 +1,4 @@
-package com.Ololaa.ololaa.dependencyInjection;
+package com.ololaa.ololaa.common.dependencyInjection;
 
 import android.arch.lifecycle.ViewModel;
 

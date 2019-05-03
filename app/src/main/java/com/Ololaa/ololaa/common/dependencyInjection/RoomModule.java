@@ -1,11 +1,11 @@
-package com.Ololaa.ololaa.dependencyInjection;
+package com.ololaa.ololaa.common.dependencyInjection;
 
 import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 
 
-import com.Ololaa.ololaa.db.AppDatabase;
+import com.ololaa.ololaa.common.db.AppDatabase;
 
 import dagger.Module;
 import dagger.Provides;

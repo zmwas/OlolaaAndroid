@@ -1,8 +1,8 @@
-package com.Ololaa.ololaa.dependencyInjection;
+package com.ololaa.ololaa.common.dependencyInjection;
 
 import android.arch.lifecycle.ViewModelProvider;
 
-import com.Ololaa.ololaa.OlolaaViewModelFactory;
+import com.ololaa.ololaa.OlolaaViewModelFactory;
 
 import dagger.Binds;
 import dagger.Module;

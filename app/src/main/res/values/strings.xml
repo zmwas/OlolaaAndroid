@@ -3,7 +3,6 @@
     <string name="license_plate_number">License Plate Number</string>
     <string name="available_tonage">Available Tonage</string>
     <string name="driver">Driver</string>
-    <string name="driver">Driver</string>
     <string name="trailer">Trailer</string>
     <string name="truck_photo">Truck Photo</string>
     <string name="insurance_sticker">Insurance Sticker</string>
@@ -21,4 +20,9 @@
     <string name="starting_location">Starting Location</string>
     <string name="first_available_date">1st Available Date</string>
     <string name="last_available_date">Last Available Date</string>
+    <string name="collection_point">Collection Point</string>
+    <string name="delivery_point">Delivery Point</string>
+    <string name="unit_weight">Unit Weight</string>
+    <string name="number_of_units">Number of Units</string>
+    <string name="upload_cargo_photo">Upload Cargo Photo</string>
 </resources>

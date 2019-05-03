@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.ololaa.ololaa.trip.TripViewModel" />
+            type="com.ololaa.ololaa.booking.BookingViewModel" />
     </data>
 
     <ScrollView
@@ -21,59 +21,26 @@
             android:orientation="vertical"
             android:padding="30dp">
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
+            <android.support.design.button.MaterialButton
+                android:id="@+id/upload_cargo_photo"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="@string/truck"
-                android:textColorHint="@color/color_accent"
-                app:Error="@{viewModel.errorTruck}"
-                app:errorEnabled="true"
+                android:text="@string/upload_cargo_photo" />
 
-                >
-
-                <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/truck"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/truck"
-                    android:inputType="text"
-
-                    android:text="@={viewModel.truck}" />
-
-            </android.support.design.widget.TextInputLayout>
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/cargo_photo"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:visibility="@{viewModel.showCargoPhoto? View.VISIBLE : View.GONE}" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:hint="@string/driver"
-                android:labelFor="@+id/driver"
-                android:text="@string/driver"
+                android:hint="@string/collection_point"
+                android:text="@string/collection_point"
                 android:textColorHint="@color/color_accent"
-                app:Error="@{viewModel.errorDriver}"
-                app:errorEnabled="false">
-
-                <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/driver"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/driver"
-                    android:inputType="text"
-                    android:text="@{viewModel.driver}" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint="@string/starting_location"
-                android:text="@string/starting_location"
-                android:textColorHint="@color/color_accent"
-                app:Error="@{viewModel.errorStartingLocation}"
+                app:Error="@{viewModel.errorCollectionPoint}"
                 app:errorEnabled="true">
 
                 <android.support.v7.widget.AppCompatEditText
@@ -81,9 +48,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/starting_location"
+                    android:hint="@string/collection_point"
                     android:inputType="text"
-                    android:text="@={viewModel.startingLocation}" />
+                    android:text="@={viewModel.collectionPoint}" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -91,10 +58,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:hint="@string/destination"
-                android:text="@string/destination"
+                android:hint="@string/delivery_point"
+                android:text="@string/delivery_point"
                 android:textColorHint="@color/color_accent"
-                app:Error="@{viewModel.errorDestination}"
+                app:Error="@{viewModel.errorDropOffPoint}"
                 app:errorEnabled="true">
 
                 <android.support.v7.widget.AppCompatEditText
@@ -102,12 +69,55 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/destination"
+                    android:hint="@string/delivery_point"
                     android:inputType="text"
-                    android:text="@={viewModel.destination}" />
+                    android:text="@={viewModel.dropOffPoint}" />
 
             </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/unit_weight"
+                android:labelFor="@+id/unit_weight"
+                android:text="@string/unit_weight"
+                android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorWeight}"
+                app:errorEnabled="false">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/unit_weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/unit_weight"
+                    android:inputType="text"
+                    android:text="@{viewModel.weight}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/number_of_units"
+                android:labelFor="@+id/number_units"
+                android:text="@string/number_of_units"
+                android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorNumberUnits}"
+                app:errorEnabled="false">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/number_units"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/number_of_units"
+                    android:inputType="text"
+                    android:text="@{viewModel.numberUnits}" />
+
+            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"

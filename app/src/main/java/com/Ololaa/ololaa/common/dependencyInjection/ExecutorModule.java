@@ -1,4 +1,4 @@
-package com.Ololaa.ololaa.dependencyInjection;
+package com.ololaa.ololaa.common.dependencyInjection;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
