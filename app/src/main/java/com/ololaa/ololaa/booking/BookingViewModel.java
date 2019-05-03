@@ -4,6 +4,12 @@ import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
 public class BookingViewModel extends ViewModel {
+    public ObservableField<String> cargoType = new ObservableField<>();
+    public ObservableField<String> errorCargoType = new ObservableField<>();
+    public ObservableField<String> cargoMover = new ObservableField<>();
+    public ObservableField<String> idNumber = new ObservableField<>();
+    public ObservableField<String> telephone = new ObservableField<>();
+    public ObservableField<String> email = new ObservableField<>();
     public ObservableField<String> weight = new ObservableField<>();
     public ObservableField<String> errorWeight = new ObservableField<>();
     public ObservableField<String> collectionPoint = new ObservableField<>();
@@ -19,7 +25,9 @@ public class BookingViewModel extends ViewModel {
     public ObservableField<String> numberUnits = new ObservableField<>();
     public ObservableField<String> errorNumberUnits = new ObservableField<>();
     public ObservableField<Boolean> showCargoPhoto = new ObservableField<>();
-
+    public ObservableField<String> tonage = new ObservableField<>();
+    public ObservableField<String> agreedPrice = new ObservableField<>();
+    public ObservableField<Boolean> callMade = new ObservableField<>();
 
 
 }
