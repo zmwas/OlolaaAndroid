@@ -53,6 +53,7 @@
                 android:labelFor="@+id/truck"
                 android:text="@string/truck_allocated"
                 android:textColorHint="@color/color_accent"
+                app:Error="@{viewModel.errorTruck}"
                 app:errorEnabled="false"
                 >
 
