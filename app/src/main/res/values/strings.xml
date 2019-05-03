@@ -33,4 +33,8 @@
     <string name="reject_booking">Reject Booking</string>
     <string name="enter_agreed_price">Enter agreed price</string>
     <string name="accept_transport_fee">Accept Transport Fee</string>
+    <string name="transporter">Transporter:</string>
+    <string name="truck_type">Truck Type</string>
+    <string name="kra_pin">KRA Pin</string>
+    <string name="email">Email</string>
 </resources>
