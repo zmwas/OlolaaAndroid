@@ -26,9 +26,9 @@
     <string name="number_of_units">Number of Units</string>
     <string name="upload_cargo_photo">Upload Cargo Photo</string>
     <string name="cargo_type">Cargo type:</string>
-    <string name="tonage">Tonage</string>
-    <string name="cargo_mover">Cargo Mover</string>
-    <string name="phone_number">Phone Number</string>
+    <string name="tonage">Tonage:</string>
+    <string name="cargo_mover">Cargo Mover:</string>
+    <string name="phone_number">Phone Number:</string>
     <string name="call_cargo_mover">Call Cargo Mover</string>
     <string name="reject_booking">Reject Booking</string>
     <string name="enter_agreed_price">Enter agreed price</string>
