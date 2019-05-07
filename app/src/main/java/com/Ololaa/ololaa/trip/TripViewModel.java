@@ -10,6 +10,9 @@ public class TripViewModel extends ViewModel {
     public ObservableField<String> collectionDate = new ObservableField<>();
     public ObservableField<String> transporter = new ObservableField<>();
     public ObservableField<String> tonage = new ObservableField<>();
+    public ObservableField<String> telephone = new ObservableField<>();
+    public ObservableField<String> email = new ObservableField<>();
+    public ObservableField<String> agreedPrice = new ObservableField<>();
     public ObservableField<String> kraPin = new ObservableField<>();
     public ObservableField<Boolean> callMade = new ObservableField<>();
     public ObservableField<String> errorTruck = new ObservableField<>();

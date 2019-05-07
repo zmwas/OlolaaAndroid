@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "599556493831",
+    "firebase_url": "https://oloola.firebaseio.com",
+    "project_id": "oloola",
+    "storage_bucket": "oloola.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599556493831:android:22bb93aa91ec7974",
+        "android_client_info": {
+          "package_name": "com.oloola.oloola"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "599556493831-48sa7gui39lrdi8sl21pr9qtmgi8f162.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiR6Aq4eO5IPsPryz0NGcWABpSQRqTciQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "599556493831-48sa7gui39lrdi8sl21pr9qtmgi8f162.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
