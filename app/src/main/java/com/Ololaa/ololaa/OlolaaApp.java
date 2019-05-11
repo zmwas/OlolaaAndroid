@@ -5,6 +5,7 @@ import android.app.Application;
 import android.support.v4.app.Fragment;
 
 import com.ololaa.ololaa.common.dependencyInjection.DaggerAppComponent;
+import com.ololaa.ololaa.common.models.Truck;
 
 import javax.inject.Inject;
 

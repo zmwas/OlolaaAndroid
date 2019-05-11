@@ -4,6 +4,8 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
+import com.ololaa.ololaa.common.models.Truck;
+
 public class TruckViewModel extends ViewModel {
     public ObservableField<String> licensePlate = new ObservableField<>();
     public ObservableField<String> errorLicensePlate = new ObservableField<>();
