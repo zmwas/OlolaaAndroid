@@ -28,7 +28,7 @@
                 android:layout_marginBottom="8dp"
                 android:hint="@string/name"
                 android:text="@string/name"
-                android:textColorHint="@color/color_accent"
+                android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorName}"
                 app:errorEnabled="true"
 
@@ -52,7 +52,7 @@
                 android:hint="@string/truck_allocated"
                 android:labelFor="@+id/truck"
                 android:text="@string/truck_allocated"
-                android:textColorHint="@color/color_accent"
+                android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorTruck}"
                 app:errorEnabled="false"
                 >
@@ -74,7 +74,7 @@
                 android:layout_marginBottom="8dp"
                 android:hint="@string/driving_license_number"
                 android:text="@string/driving_license_number"
-                android:textColorHint="@color/color_accent"
+                android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorDrivingLicenseNumber}"
                 app:errorEnabled="true">
 
@@ -95,7 +95,7 @@
                 android:layout_marginBottom="8dp"
                 android:hint="@string/driving_license_type"
                 android:text="@string/driving_license_type"
-                android:textColorHint="@color/color_accent"
+                android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorDrivingLicenseType}"
                 app:errorEnabled="true">
 
@@ -117,7 +117,7 @@
                 android:layout_marginBottom="8dp"
                 android:hint="@string/id_number"
                 android:text="@string/id_number"
-                android:textColorHint="@color/color_accent"
+                android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorIdNumber}"
                 app:errorEnabled="true">
 

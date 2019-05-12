@@ -39,7 +39,7 @@
                 android:layout_marginBottom="8dp"
                 android:hint="@string/collection_point"
                 android:text="@string/collection_point"
-                android:textColorHint="@color/color_accent"
+                android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorCollectionPoint}"
                 app:errorEnabled="true">
 
@@ -60,7 +60,7 @@
                 android:layout_marginBottom="8dp"
                 android:hint="@string/delivery_point"
                 android:text="@string/delivery_point"
-                android:textColorHint="@color/color_accent"
+                android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorDropOffPoint}"
                 app:errorEnabled="true">
 
@@ -82,7 +82,7 @@
                 android:hint="@string/unit_weight"
                 android:labelFor="@+id/unit_weight"
                 android:text="@string/unit_weight"
-                android:textColorHint="@color/color_accent"
+                android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorWeight}"
                 app:errorEnabled="false">
 
@@ -104,7 +104,7 @@
                 android:hint="@string/number_of_units"
                 android:labelFor="@+id/number_units"
                 android:text="@string/number_of_units"
-                android:textColorHint="@color/color_accent"
+                android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorNumberUnits}"
                 app:errorEnabled="false">
 
@@ -125,7 +125,7 @@
                 android:layout_marginBottom="8dp"
                 android:hint="@string/available_tonage"
                 android:text="@string/available_tonage"
-                android:textColorHint="@color/color_accent"
+                android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorAvailableTonage}"
                 app:errorEnabled="true">
 
@@ -145,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:hint="@string/first_available_date"
-                android:textColorHint="@color/color_accent"
+                android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorFirstAvailableDate}"
                 app:errorEnabled="true"
                 app:layout_constraintTop_toTopOf="parent">
@@ -164,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:hint="@string/last_available_date"
-                android:textColorHint="@color/color_accent"
+                android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorLastAvailableDate}"
                 app:errorEnabled="true"
                 app:layout_constraintTop_toTopOf="parent">
