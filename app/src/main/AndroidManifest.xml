@@ -18,6 +18,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".driver.DriverListActivity" />
+        <activity android:name=".driver.CreateDriverActivity" />
+        <activity android:name=".trip.TripListActivity" />
+        <activity android:name=".trip.CreateTripActivity" />
+        <activity android:name=".truck.TruckListActivity" />
+        <activity android:name=".truck.CreateTruckActivity" />
+        <activity android:name=".truck.TruckDetailActivity" />
+        <activity android:name=".trip.TripDetailActivity" />
+        <activity android:name=".driver.DriverDetailActivity" />
+        <activity android:name=".booking.FilterTripsActivity" />
+        <activity android:name=".booking.BookingDetailsActivity" />
+        <activity android:name=".booking.CreateBookingActivity" />
+        <activity android:name=".booking.ListTripsActivity" />
+        <activity android:name=".user.LoginActivity" />
+        <activity android:name=".user.RegisterUserActivity" />
     </application>
 
 </manifest>
