@@ -30,10 +30,10 @@
         <activity android:name=".booking.FilterTripsActivity" />
         <activity android:name=".booking.BookingDetailsActivity" />
         <activity android:name=".booking.CreateBookingActivity" />
-        <activity android:name=".booking.ListTripsActivity" />
+        <activity android:name=".booking.ListBookingsActivity" />
+        <activity android:name=".booking.FilteredTripsActivity" />
         <activity android:name=".user.LoginActivity" />
         <activity android:name=".user.RegisterUserActivity" />
-        <activity android:name=".booking.ListBookingsActivity" />
     </application>
 
 </manifest>
