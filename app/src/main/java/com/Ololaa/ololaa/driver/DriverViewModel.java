@@ -12,6 +12,7 @@ public class DriverViewModel extends ViewModel {
     public ObservableField<String> drivingLicenseNumber = new ObservableField<>();
     public ObservableField<String> errorDrivingLicenseNumber = new ObservableField<>();
     public ObservableField<String> drivingLicenseType = new ObservableField<>();
+    public ObservableField<Integer> drivingLicenseTypePos = new ObservableField<>();
     public ObservableField<String> errorDrivingLicenseType = new ObservableField<>();
     public ObservableField<String> idNumber = new ObservableField<>();
     public ObservableField<String> errorIdNumber = new ObservableField<>();

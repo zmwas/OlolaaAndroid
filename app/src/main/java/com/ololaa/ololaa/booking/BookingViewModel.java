@@ -5,6 +5,7 @@ import android.databinding.ObservableField;
 
 public class BookingViewModel extends ViewModel {
     public ObservableField<String> cargoType = new ObservableField<>();
+    public ObservableField<String> cargoPictureUrl = new ObservableField<>();
     public ObservableField<String> errorCargoType = new ObservableField<>();
     public ObservableField<String> cargoMover = new ObservableField<>();
     public ObservableField<String> idNumber = new ObservableField<>();

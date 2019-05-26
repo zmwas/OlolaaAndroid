@@ -5,6 +5,14 @@
         <item>Transporter</item>
     </string-array>
 
+    <string-array name="license_types">
+        <item>--Select Driving License Type--</item>
+        <item>C1 Light Truck</item>
+        <item>C Medium Truck</item>
+        <item>CE Heavy Truck with trailer</item>
+        <item>CE Heavy Goods Vehicle For Transportation of Hazardous Materials</item>
+    </string-array>
+
     <string name="app_name">Ololaa</string>
     <string name="license_plate_number">License Plate Number</string>
     <string name="available_tonage">Available Tonage</string>
