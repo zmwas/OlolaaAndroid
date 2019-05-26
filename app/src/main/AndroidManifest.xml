@@ -34,7 +34,6 @@
         <activity android:name=".booking.FilteredTripsActivity" />
         <activity android:name=".user.LoginActivity" />
         <activity android:name=".user.RegisterUserActivity" />
-        <activity android:name=".booking.AvailableTruckActivity" />
     </application>
 
 </manifest>
