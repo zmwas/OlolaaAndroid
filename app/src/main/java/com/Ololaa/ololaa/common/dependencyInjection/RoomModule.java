@@ -14,7 +14,7 @@ import dagger.Provides;
 public class RoomModule {
     @Provides
     public AppDatabase database(Application application) {
-        RoomDatabase.Builder<AppDatabase> databaseBuilder = Room.databaseBuilder(application, AppDatabase.class, "bookmarks.db");
+        RoomDatabase.Builder<AppDatabase> databaseBuilder = Room.databaseBuilder(application, AppDatabase.class, "oloola.db");
         return databaseBuilder.build();
     }
 

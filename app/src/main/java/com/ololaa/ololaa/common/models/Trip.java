@@ -5,8 +5,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.time.LocalDate;
 import java.util.Date;
+
 @Entity
 public class Trip {
     @PrimaryKey(autoGenerate = true)
@@ -31,14 +31,17 @@ public class Trip {
     @ColumnInfo(name = "available_tonage")
 
     Double availableTonage;
-    @ColumnInfo(name = "cargo_mover")
+    @Ignore
 
     AppUser cargoMover;
-    @ColumnInfo(name = "cargo_type")
+    @ColumnInfo(name = "cargo_mover_name")
+    String cargoMoverName;
+    @ColumnInfo(name = "cargo_mover_number")
+    String cargoMoverNumber;
 
+    @ColumnInfo(name = "cargo_type")
     String cargoType;
     @ColumnInfo(name = "transport_fees")
-
     Double transportFees;
     @ColumnInfo(name = "is_available")
 

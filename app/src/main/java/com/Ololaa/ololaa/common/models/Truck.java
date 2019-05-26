@@ -8,7 +8,7 @@ import android.arch.persistence.room.PrimaryKey;
 public class Truck {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")
-    private int _id;
+    int _id;
     @ColumnInfo(name = "id")
 
     Long id;
@@ -34,14 +34,6 @@ public class Truck {
     @ColumnInfo(name = "ntsa_certificate_number")
 
     String ntsaCertificateNumber;
-
-    public int getId() {
-        return _id;
-    }
-
-    public void setId(int _id) {
-        this._id = _id;
-    }
 
     public int get_id() {
         return _id;

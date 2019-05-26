@@ -52,7 +52,7 @@
                 android:layout_marginBottom="8dp"
                 android:hint="@string/password"
                 android:textColorHint="@color/colorPrimary"
-                app:Error="@{viewModel.errorFirstAvailableDate}"
+                app:Error="@{viewModel.errorPassword}"
                 app:errorEnabled="true"
                 app:layout_constraintTop_toTopOf="parent">
 
