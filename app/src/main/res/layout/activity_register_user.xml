@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.ololaa.ololaa.user.UserViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/company_name"
+                android:text="@string/company_name"
+                android:textColorHint="@color/colorPrimary"
+                app:Error="@{viewModel.errorCompanyName}"
+                app:errorEnabled="true">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/company_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/company_name"
+                    android:inputType="text"
+                    android:text="@={viewModel.companyName}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/email"
+                android:text="@string/email"
+                android:textColorHint="@color/colorPrimary"
+                app:Error="@{viewModel.errorEmail}"
+                app:errorEnabled="true">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/email"
+                    android:inputType="text"
+                    android:text="@={viewModel.email}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/kra_pin"
+                android:textColorHint="@color/colorPrimary"
+                app:Error="@{viewModel.errorKraPin}"
+                app:errorEnabled="false">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/kra_pin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/kra_pin"
+                    android:inputType="text"
+                    android:text="@{viewModel.kraPin}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/phone_number"
+                android:text="@string/phone_number"
+                android:textColorHint="@color/colorPrimary"
+                app:Error="@{viewModel.errorPhoneNumber}"
+                app:errorEnabled="false">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/phone_number"
+                    android:inputType="text"
+                    android:text="@{viewModel.phoneNumber}" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/role"
+                android:text="@string/role"
+                android:textColorHint="@color/colorPrimary"
+                app:Error="@{viewModel.errorRole}"
+                app:errorEnabled="true">
+
+               <android.support.v7.widget.AppCompatSpinner
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:entries="@array/roles"
+                   android:textSize="20sp"
+                   bind:selectedValue="@={viewModel.role}"
+                   bind:selectedValuePosition="@={viewModel.rolePos}"
+                   />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/password_Til"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/password"
+                android:textColorHint="@color/colorPrimary"
+                app:Error="@{viewModel.errorFirstAvailableDate}"
+                app:errorEnabled="true"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:text="@={viewModel.password}" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.button.MaterialButton
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/submit" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

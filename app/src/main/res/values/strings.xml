@@ -1,4 +1,10 @@
 <resources>
+    <string-array name="roles">
+        <item>--Select Role--</item>
+        <item>Customer</item>
+        <item>Transporter</item>
+    </string-array>
+
     <string name="app_name">Ololaa</string>
     <string name="license_plate_number">License Plate Number</string>
     <string name="available_tonage">Available Tonage</string>
@@ -37,4 +43,7 @@
     <string name="truck_type">Truck Type</string>
     <string name="kra_pin">KRA Pin</string>
     <string name="email">Email</string>
+    <string name="company_name">Company Name</string>
+    <string name="role">Role</string>
+    <string name="password">Password</string>
 </resources>
