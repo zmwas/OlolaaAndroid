@@ -13,6 +13,7 @@ import com.ololaa.ololaa.common.requests.UpdatePriceRequest;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -22,26 +23,26 @@ import retrofit2.http.PUT;
 import retrofit2.http.Part;
 
 public interface ApiService {
-    @POST("/v1/auth/signup")
+    @POST("v1/auth/signup")
     Call<AppUser> signUp(@Body CreateUserRequest request);
 
-    @POST("/v1/auth/login")
+    @POST("v1/auth/login")
     Call<AppUser> login(@Body LoginRequest request);
 
-    @POST("/v1/trip")
+    @POST("v1/trip")
     Call<Trip> createTrip(@Body CreateTripRequest request);
 
-    @POST("/v1/booking")
-    Call<Trip> createBooking(@Part("file") RequestBody file,
+    @POST("v1/booking")
+    Call<Trip> createBooking(@Part("file") MultipartBody.Part file,
                              @Part("cargoType") RequestBody cargoType,
                              @Part("collectionPoint") RequestBody collectionPoint,
                              @Part("dropOffPoint") RequestBody dropOffPoint,
                              @Part("tripId") RequestBody tripId
     );
 
-    @POST("/v1/truck")
-    Call<Truck> createTruck(@Part("photo") RequestBody photo,
-                            @Part("sticker") RequestBody sticker,
+    @POST("v1/truck")
+    Call<Truck> createTruck(@Part("photo") MultipartBody.Part photo,
+                            @Part("sticker") MultipartBody.Part sticker,
                             @Part("licensePlateNumber") RequestBody licensePlateNumber,
                             @Part("driverId") RequestBody driverId,
                             @Part("isTrailer") RequestBody isTrailer,
@@ -49,38 +50,34 @@ public interface ApiService {
                             @Part("ntsaCertificateNumber") RequestBody ntsaCertificateNumber,
                             @Part("transporterId") RequestBody transporterId
 
-
     );
 
-    @POST("/v1/truck")
-    Call<Driver> createDriver(@Part("photo") RequestBody photo,
-                              @Part("sticker") RequestBody sticker,
-                              @Part("licensePlateNumber") RequestBody licensePlateNumber,
-                              @Part("driverId") RequestBody driverId,
-                              @Part("isTrailer") RequestBody isTrailer,
-                              @Part("availableTonage") RequestBody availableTonage,
-                              @Part("ntsaCertificateNumber") RequestBody ntsaCertificateNumber,
+    @POST("v1/driver")
+    Call<Driver> createDriver(@Part("photo") MultipartBody.Part photo,
+                              @Part("name") RequestBody name,
+                              @Part("drivingLicense") RequestBody drivingLicense,
+                              @Part("drivingLicenseType") RequestBody drivingLicenseType,
+                              @Part("idNumber") RequestBody idNumber,
+                              @Part("truckId") RequestBody truckId,
                               @Part("transporterId") RequestBody transporterId
-
-
     );
 
-    @GET("/truck")
+    @GET("v1/truck")
     Call<List<Truck>> fetchTrucks();
 
-    @GET("/driver")
+    @GET("v1/driver")
     Call<List<Driver>> fetchDrivers();
 
-    @GET("/booking")
+    @GET("v1/booking")
     Call<List<Trip>> fetchBookings();
 
-    @POST("/filterTrip")
+    @POST("v1/filterTrip")
     Call<List<Trip>> fetchTripsForLocation(@Body FilterTripsRequest request);
 
-    @PUT("/user")
+    @PUT("v1/user")
     Call<AppUser> updateFirebaseToken(@Body UpdateFirebaseTokenRequest request);
 
-    @PUT("/user")
+    @PUT("v1/trip")
     Call<Trip> updateTripPrice(@Body UpdatePriceRequest request);
 
 

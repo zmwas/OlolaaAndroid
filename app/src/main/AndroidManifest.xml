@@ -33,6 +33,7 @@
         <activity android:name=".booking.ListTripsActivity" />
         <activity android:name=".user.LoginActivity" />
         <activity android:name=".user.RegisterUserActivity" />
+        <activity android:name=".booking.ListBookingsActivity" />
     </application>
 
 </manifest>
