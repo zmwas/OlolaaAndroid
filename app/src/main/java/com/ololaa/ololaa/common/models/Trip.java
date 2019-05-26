@@ -70,6 +70,47 @@ public class Trip {
     @Ignore
 
     Location tripStart;
+
+    public String getCargoMoverName() {
+        return cargoMoverName;
+    }
+
+    public void setCargoMoverName(String cargoMoverName) {
+        this.cargoMoverName = cargoMoverName;
+    }
+
+    public String getCargoMoverNumber() {
+        return cargoMoverNumber;
+    }
+
+    public void setCargoMoverNumber(String cargoMoverNumber) {
+        this.cargoMoverNumber = cargoMoverNumber;
+    }
+
+    public Double getUnits() {
+        return units;
+    }
+
+    public void setUnits(Double units) {
+        this.units = units;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
+    public Boolean getBooked() {
+        return isBooked;
+    }
+
+    public void setBooked(Boolean booked) {
+        isBooked = booked;
+    }
+
     @Ignore
 
     Location tripDestination;
@@ -77,6 +118,15 @@ public class Trip {
     @Ignore
 
     AppUser transporter;
+
+    @ColumnInfo(name = "units")
+    Double units;
+
+    @ColumnInfo(name = "weight")
+    Double weight;
+
+    @Ignore
+    Boolean isBooked;
 
     public int get_id() {
         return _id;
@@ -244,5 +294,9 @@ public class Trip {
 
     public void setTransporter(AppUser transporter) {
         this.transporter = transporter;
+    }
+
+    public String getTripDesc() {
+        return getTripStartName() + "-" + getTripEndName();
     }
 }

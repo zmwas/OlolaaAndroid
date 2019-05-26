@@ -37,6 +37,8 @@ public interface ApiService {
                              @Part("cargoType") RequestBody cargoType,
                              @Part("collectionPoint") RequestBody collectionPoint,
                              @Part("dropOffPoint") RequestBody dropOffPoint,
+                             @Part("units") RequestBody units,
+                             @Part("weight") RequestBody weight,
                              @Part("tripId") RequestBody tripId
     );
 
