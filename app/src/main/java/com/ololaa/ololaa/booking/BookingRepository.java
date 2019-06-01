@@ -1,10 +1,15 @@
 package com.ololaa.ololaa.booking;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
+
 import com.ololaa.ololaa.common.api.ApiService;
 import com.ololaa.ololaa.common.db.TripDao;
 import com.ololaa.ololaa.common.models.Trip;
+import com.ololaa.ololaa.common.requests.FilterTripsRequest;
 
 import java.io.File;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -19,6 +24,7 @@ public class BookingRepository {
 
     ApiService apiService;
     TripDao tripDao;
+    MutableLiveData<List<Trip>> trips = new MutableLiveData<>();
 
     @Inject
     public BookingRepository(ApiService apiService, TripDao tripDao) {
@@ -27,7 +33,7 @@ public class BookingRepository {
     }
 
 
-    public void createBooking(Trip trip, String cargo) {
+    void createBooking(Trip trip, String cargo) {
         MediaType image = MediaType.parse("image/*");
         MediaType text = MediaType.parse("text/plain");
 
@@ -56,5 +62,23 @@ public class BookingRepository {
             }
         });
 
+    }
+
+    LiveData<List<Trip>> filterTrips(FilterTripsRequest request) {
+        Call<List<Trip>> fetchTripsForLocation = apiService.fetchTripsForLocation(request);
+        fetchTripsForLocation.enqueue(new Callback<List<Trip>>() {
+            @Override
+            public void onResponse(Call<List<Trip>> call, Response<List<Trip>> response) {
+                if (response.isSuccessful()) {
+                    trips.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Trip>> call, Throwable t) {
+
+            }
+        });
+        return trips;
     }
 }

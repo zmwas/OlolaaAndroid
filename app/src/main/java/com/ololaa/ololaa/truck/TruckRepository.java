@@ -1,10 +1,15 @@
 package com.ololaa.ololaa.truck;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
+
 import com.ololaa.ololaa.common.api.ApiService;
 import com.ololaa.ololaa.common.db.TruckDao;
 import com.ololaa.ololaa.common.models.Truck;
 
 import java.io.File;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
@@ -18,11 +23,14 @@ import retrofit2.Response;
 public class TruckRepository {
     private ApiService apiService;
     private TruckDao truckDao;
+    private ExecutorService executorService;
+    public MutableLiveData<List<Truck>> trucks = new MutableLiveData<>();
 
     @Inject
-    public TruckRepository(ApiService apiService, TruckDao truckDao) {
+    public TruckRepository(ApiService apiService, TruckDao truckDao, ExecutorService executorService) {
         this.apiService = apiService;
         this.truckDao = truckDao;
+        this.executorService = executorService;
     }
 
 
@@ -63,5 +71,12 @@ public class TruckRepository {
 
             }
         });
+    }
+
+    LiveData<List<Truck>> fetchTrucks() {
+        executorService.execute(() -> {
+            trucks.postValue(truckDao.fetchTrucks());
+        });
+        return trucks;
     }
 }

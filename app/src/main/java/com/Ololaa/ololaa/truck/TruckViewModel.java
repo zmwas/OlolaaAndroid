@@ -1,10 +1,13 @@
 package com.ololaa.ololaa.truck;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
 import com.ololaa.ololaa.common.models.Truck;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -60,6 +63,11 @@ public class TruckViewModel extends ViewModel {
     public void createTruck() {
         if (isDataValid())
             truckRepository.createTruck(truck(), truckPhoto.get(), insuranceSticker.get());
+    }
+
+
+    public LiveData<List<Truck>> fetchTrucks() {
+        return truckRepository.fetchTrucks();
     }
 
 }

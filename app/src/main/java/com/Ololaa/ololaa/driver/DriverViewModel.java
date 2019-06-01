@@ -1,10 +1,13 @@
 package com.ololaa.ololaa.driver;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
 import com.ololaa.ololaa.common.models.Driver;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -59,5 +62,9 @@ public class DriverViewModel extends ViewModel {
     public void createDriver() {
         if (isDataValid())
             driverRepository.createDriver(driver(), passportPhoto.get());
+    }
+
+    public LiveData<List<Driver>> fetchDrivers() {
+        return driverRepository.fetchDrivers();
     }
 }

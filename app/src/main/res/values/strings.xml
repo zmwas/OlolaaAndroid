@@ -54,4 +54,9 @@
     <string name="company_name">Company Name</string>
     <string name="role">Role</string>
     <string name="password">Password</string>
+    <string name="create_booking">Create Booking</string>
+    <string name="tonnes">tonnes</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="depature">Depature</string>
 </resources>

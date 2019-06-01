@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ololaa.ololaa.booking.BookingViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/truck"
+            android:textColorHint="@color/colorPrimary"
+            app:Error="@{viewModel.errorCollectionPoint}"
+            app:errorEnabled="true"
+
+            >
+
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/depature"
+                android:text="@={viewModel.collectionPoint}}" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/to"
+            android:textSize="15sp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/truck"
+            android:textColorHint="@color/colorPrimary"
+            app:Error="@{viewModel.errorDropOffPoint}"
+            app:errorEnabled="true"
+
+            >
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/destination"
+                android:text="@={viewModel.dropOffPoint}" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.button.MaterialButton
+            android:id="@+id/filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="@{()->viewModel.filterTrips()}"
+            android:text="@string/submit" />
+    </LinearLayout>
+</layout>

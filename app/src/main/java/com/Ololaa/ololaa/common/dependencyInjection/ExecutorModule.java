@@ -1,6 +1,6 @@
 package com.ololaa.ololaa.common.dependencyInjection;
 
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import dagger.Module;
@@ -10,7 +10,7 @@ import dagger.Provides;
 public class ExecutorModule {
 
     @Provides
-    public Executor executor() {
+    public ExecutorService executor() {
         return Executors.newSingleThreadExecutor();
     }
 }

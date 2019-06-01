@@ -16,6 +16,8 @@ import com.ololaa.ololaa.truck.TruckListActivity;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjection;
+
 import static com.ololaa.ololaa.Constants.TRUCK;
 
 public class CreateDriverActivity extends AppCompatActivity {
@@ -29,6 +31,7 @@ public class CreateDriverActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidInjection.inject(this);
         binding = DataBindingUtil.setContentView(this, R.layout.fragment_driver_registration);
         viewModel = ViewModelProviders.of(this, factory).get(DriverViewModel.class);
         binding.setViewModel(viewModel);

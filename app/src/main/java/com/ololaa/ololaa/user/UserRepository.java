@@ -8,6 +8,8 @@ import com.ololaa.ololaa.common.requests.AuthResponse;
 import com.ololaa.ololaa.common.requests.CreateUserRequest;
 import com.ololaa.ololaa.common.requests.LoginRequest;
 
+import javax.inject.Inject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,6 +24,7 @@ public class UserRepository {
     public SingleLiveEvent<Enum> showSuccessDialog = new SingleLiveEvent<>();
     public SingleLiveEvent<Enum> showError = new SingleLiveEvent<>();
 
+    @Inject
     public UserRepository(ApiService apiService, SharedPrefsWrapper wrapper) {
         this.apiService = apiService;
         this.wrapper = wrapper;

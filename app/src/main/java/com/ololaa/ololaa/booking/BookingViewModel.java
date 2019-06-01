@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
 import com.ololaa.ololaa.common.models.Trip;
+import com.ololaa.ololaa.common.requests.FilterTripsRequest;
 
 import javax.inject.Inject;
 
@@ -35,6 +36,8 @@ public class BookingViewModel extends ViewModel {
     public ObservableField<Boolean> callMade = new ObservableField<>();
     public ObservableField<Trip> tripObs = new ObservableField<>();
     public ObservableField<String> photo = new ObservableField<>();
+    public ObservableField<Double> longitude = new ObservableField<>();
+    public ObservableField<Double> latitude = new ObservableField<>();
 
     private BookingRepository bookingRepository;
 
@@ -56,5 +59,18 @@ public class BookingViewModel extends ViewModel {
 
     public void createBooking() {
         bookingRepository.createBooking(trip(), photo.get());
+    }
+
+    public FilterTripsRequest request() {
+        FilterTripsRequest request = new FilterTripsRequest();
+        request.setCollectionPoint(collectionPoint.get());
+        request.setDropOffPoint(dropOffPoint.get());
+        request.setLatitude(latitude.get());
+        request.setLongitude(longitude.get());
+        return request;
+    }
+
+    public void filterTrips() {
+        bookingRepository.filterTrips(request());
     }
 }

@@ -1,10 +1,15 @@
 package com.ololaa.ololaa.driver;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
+
 import com.ololaa.ololaa.common.api.ApiService;
 import com.ololaa.ololaa.common.db.DriverDao;
 import com.ololaa.ololaa.common.models.Driver;
 
 import java.io.File;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
@@ -16,15 +21,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DriverRepository {
-    ApiService apiService;
-    DriverDao driverDao;
+    private ApiService apiService;
+    private DriverDao driverDao;
+    private ExecutorService executorService;
+    public MutableLiveData<List<Driver>> drivers = new MutableLiveData<>();
 
     @Inject
-    public DriverRepository(ApiService apiService, DriverDao driverDao) {
+    public DriverRepository(ApiService apiService, DriverDao driverDao, ExecutorService executorService) {
         this.apiService = apiService;
         this.driverDao = driverDao;
+        this.executorService = executorService;
     }
-
 
     void createDriver(Driver driver, String passportPhoto) {
         MediaType image = MediaType.parse("image/*");
@@ -56,5 +63,10 @@ public class DriverRepository {
 
             }
         });
+    }
+
+    LiveData<List<Driver>> fetchDrivers() {
+        executorService.execute(() -> drivers.postValue(driverDao.fetchDrivers()));
+        return drivers;
     }
 }
