@@ -14,10 +14,12 @@ import java.util.List;
 public class BookingsAdapter extends RecyclerView.Adapter<BookingViewHolder> {
     private List<Trip> bookings;
     private Context context;
+    private BookingCallBack callBack;
 
-    public BookingsAdapter(List<Trip> bookings, Context context) {
+    public BookingsAdapter(List<Trip> bookings, Context context, BookingCallBack callBack) {
         this.bookings = bookings;
         this.context = context;
+        this.callBack = callBack;
     }
 
     @NonNull
@@ -32,6 +34,9 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingViewHolder> {
     public void onBindViewHolder(@NonNull BookingViewHolder bookingViewHolder, int i) {
         Trip trip = bookings.get(i);
         bookingViewHolder.bind(trip);
+        bookingViewHolder.binding.getRoot().setOnClickListener(v -> {
+            callBack.onItemClick(i, trip, v);
+        });
     }
 
     @Override

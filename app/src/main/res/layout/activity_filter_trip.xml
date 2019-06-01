@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/depature"
-                android:text="@={viewModel.collectionPoint}}" />
+                android:text="@={viewModel.collectionPoint}" />
         </android.support.design.widget.TextInputLayout>
 
         <TextView
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/submit" />
-        
+
         <LinearLayout
             android:id="@+id/list_container"
             android:layout_width="match_parent"

@@ -81,4 +81,23 @@ public class BookingRepository {
         });
         return trips;
     }
+
+    public LiveData<List<Trip>> fetchBookings() {
+        Call<List<Trip>> fetchBookings = apiService.fetchBookings();
+
+        fetchBookings.enqueue(new Callback<List<Trip>>() {
+            @Override
+            public void onResponse(Call<List<Trip>> call, Response<List<Trip>> response) {
+                if (response.isSuccessful()) {
+                    trips.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Trip>> call, Throwable t) {
+
+            }
+        });
+        return trips;
+    }
 }

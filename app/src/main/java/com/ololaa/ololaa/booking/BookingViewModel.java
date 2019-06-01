@@ -76,4 +76,8 @@ public class BookingViewModel extends ViewModel {
     public LiveData<List<Trip>> filterTrips() {
         return bookingRepository.filterTrips(request());
     }
+
+    public LiveData<List<Trip>> fetchBookings() {
+        return bookingRepository.fetchBookings();
+    }
 }
