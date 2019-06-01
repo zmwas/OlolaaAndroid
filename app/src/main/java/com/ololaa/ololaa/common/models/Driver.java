@@ -6,37 +6,39 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity
-public class Driver {
+public class Driver implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")
 
-    int _id;
+    public int _id;
 
     @ColumnInfo(name = "id")
 
-    Long id;
+    public Long id;
     @ColumnInfo(name = "name")
 
-    String name;
+    public String name;
     @ColumnInfo(name = "driving_license")
 
-    String drivingLicense;
+    public String drivingLicense;
     @ColumnInfo(name = "driving_license_type")
 
-    String drivingLicenseType;
+    public String drivingLicenseType;
     @ColumnInfo(name = "id_number")
 
-    String idNumber;
+    public String idNumber;
     @ColumnInfo(name = "passport_photo_url")
 
-    String passPortPhotoUrl;
+    public String passPortPhotoUrl;
     @ColumnInfo(name = "truck_id")
 
-    Long truckId;
+    public Long truckId;
 
     @Ignore
-    AppUser transporter;
+    public AppUser transporter;
 
 
     public int get_id() {

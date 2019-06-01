@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.app.Application;
 import android.support.v4.app.Fragment;
 
+import com.levibostian.wendy.service.Wendy;
 import com.ololaa.ololaa.common.dependencyInjection.DaggerAppComponent;
-import com.ololaa.ololaa.common.models.Truck;
+import com.ololaa.ololaa.fetchingTasks.OlolaaTaskFactory;
 
 import javax.inject.Inject;
 
@@ -20,10 +21,15 @@ public class OlolaaApp extends Application implements HasActivityInjector, HasSu
 
     @Inject
     DispatchingAndroidInjector<Fragment> mFragmentInjector;
+
+    @Inject
+    OlolaaTaskFactory factory;
+
     @Override
     public void onCreate() {
         super.onCreate();
         DaggerAppComponent.builder().application(this).build().inject(this);
+        Wendy.init(this, factory);
 
     }
 
@@ -35,6 +41,10 @@ public class OlolaaApp extends Application implements HasActivityInjector, HasSu
     @Override
     public AndroidInjector<Fragment> supportFragmentInjector() {
         return mFragmentInjector;
+    }
+
+    public OlolaaTaskFactory getFactory() {
+        return factory;
     }
 }
 

@@ -4,7 +4,6 @@ import com.ololaa.ololaa.MainActivity;
 import com.ololaa.ololaa.booking.BookingDetailsActivity;
 import com.ololaa.ololaa.booking.CreateBookingActivity;
 import com.ololaa.ololaa.booking.FilterTripsActivity;
-import com.ololaa.ololaa.booking.ListTripsActivity;
 import com.ololaa.ololaa.driver.CreateDriverActivity;
 import com.ololaa.ololaa.driver.DriverDetailActivity;
 import com.ololaa.ololaa.driver.DriverListActivity;
@@ -36,11 +35,6 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector()
     abstract FilterTripsActivity filterTripsActivity();
-
-
-    @ContributesAndroidInjector()
-    abstract ListTripsActivity listTripsActivity();
-
 
     @ContributesAndroidInjector()
     abstract CreateDriverActivity createDriverActivity();

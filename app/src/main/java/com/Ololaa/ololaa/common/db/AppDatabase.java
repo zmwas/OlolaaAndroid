@@ -14,4 +14,8 @@ import com.ololaa.ololaa.common.models.Truck;
 @Database(entities = {AppUser.class, Driver.class, Truck.class, Trip.class, Location.class}, version = 1)
 @TypeConverters(Converters.class)
 public abstract class AppDatabase extends RoomDatabase {
+    public abstract TruckDao truckDao();
+    public abstract TripDao tripDao();
+    public abstract DriverDao driverDao();
+    public abstract LocationDao locationDao();
 }

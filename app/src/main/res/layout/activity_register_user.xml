@@ -116,14 +116,13 @@
                 app:Error="@{viewModel.errorRole}"
                 app:errorEnabled="true">
 
-               <android.support.v7.widget.AppCompatSpinner
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:entries="@array/roles"
-                   android:textSize="20sp"
-                   bind:selectedValue="@={viewModel.role}"
-                   bind:selectedValuePosition="@={viewModel.rolePos}"
-                   />
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/roles"
+                    android:textSize="20sp"
+                    bind:selectedValue="@={viewModel.role}"
+                    bind:selectedValuePosition="@={viewModel.rolePos}" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -141,6 +140,7 @@
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textPassword"
                     android:hint="@string/password"
                     android:text="@={viewModel.password}" />
             </android.support.design.widget.TextInputLayout>
@@ -149,6 +149,7 @@
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
+                android:onClick="@{()->viewModel.signUp()}"
                 android:text="@string/submit" />
         </LinearLayout>
     </ScrollView>

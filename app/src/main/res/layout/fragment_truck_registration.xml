@@ -97,8 +97,8 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="@string/trailer"
-                android:checked="@={viewModel.trailer}" />
+                android:checked="@={viewModel.trailer}"
+                android:text="@string/trailer" />
 
             <android.support.design.button.MaterialButton
                 android:id="@+id/upload_truck_photo"
@@ -111,7 +111,8 @@
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_marginBottom="8dp"
-                android:visibility="@{viewModel.showTruckPhoto? View.VISIBLE : View.GONE}" />
+                android:visibility="@{viewModel.showTruckPhoto? View.VISIBLE : View.GONE}"
+                app:imageUrl="@{viewModel.truckPhoto}" />
 
             <android.support.design.button.MaterialButton
                 android:id="@+id/upload_insurance_sticker"
@@ -124,7 +125,8 @@
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_marginBottom="8dp"
-                android:visibility="@{viewModel.showInsuranceSticker? View.VISIBLE : View.GONE}" />
+                android:visibility="@{viewModel.showInsuranceSticker? View.VISIBLE : View.GONE}"
+                app:imageUrl="@{viewModel.insuranceSticker}" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -150,6 +152,7 @@
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
+                android:onClick="@{()->viewModel.createTruck()}"
                 android:text="@string/submit" />
         </LinearLayout>
     </ScrollView>

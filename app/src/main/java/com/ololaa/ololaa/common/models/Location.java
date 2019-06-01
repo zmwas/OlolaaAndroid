@@ -8,19 +8,19 @@ public class Location {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")
 
-    int _id;
+    public int _id;
     @ColumnInfo(name = "id")
 
-    Long id;
+    public Long id;
     @ColumnInfo(name = "name")
 
-    String name;
+    public String name;
     @ColumnInfo(name = "latitude")
 
-    Double latitude;
+    public  Double latitude;
     @ColumnInfo(name = "longitude")
 
-    Double longitude;
+    public Double longitude;
 
     public int get_id() {
         return _id;

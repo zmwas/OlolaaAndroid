@@ -7,6 +7,7 @@
             name="trip"
             type="com.ololaa.ololaa.common.models.Trip" />
     </data>
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +35,7 @@
                 android:id="@+id/unit_weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{trip.weight}"
+                android:text="@{String.valueOf(trip.weight)}"
                 android:textSize="20sp"
                 android:paddingEnd="20dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="@{trip.units}"
+                android:text="@{String.valueOf(trip.units)}"
                 app:layout_constraintStart_toEndOf="@id/unit_weight"
                 app:layout_constraintTop_toBottomOf="@id/trip_points"
 

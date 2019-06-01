@@ -3,7 +3,11 @@ package com.ololaa.ololaa.common.models;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class AppUser {
@@ -11,25 +15,38 @@ public class AppUser {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")
 
-    int _id;
+    public int _id;
     @ColumnInfo(name = "id")
 
-    Long id;
+    public Long id;
     @ColumnInfo(name = "companyName")
 
-    String companyName;
+    public String companyName;
     @ColumnInfo(name = "kraPin")
 
-    String kraPin;
+    public String kraPin;
     @ColumnInfo(name = "email")
 
-    String email;
+    public String email;
     @ColumnInfo(name = "phoneNumber")
 
-    String phoneNumber;
+    public String phoneNumber;
     @ColumnInfo(name = "firebaseToken")
 
-    String firebaseToken;
+    public String firebaseToken;
+
+    @Ignore
+    public List<String> roles = new ArrayList<>();
+
+    public String username;
+
+    public boolean isAccountNonExpired;
+
+    public boolean isAccountNonLocked;
+
+    public boolean isCredentialsNonExpired;
+
+    public boolean isEnabled;
 
     public int get_id() {
         return _id;
@@ -85,5 +102,53 @@ public class AppUser {
 
     public void setFirebaseToken(String firebaseToken) {
         this.firebaseToken = firebaseToken;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public boolean isAccountNonExpired() {
+        return isAccountNonExpired;
+    }
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        isAccountNonExpired = accountNonExpired;
+    }
+
+    public boolean isAccountNonLocked() {
+        return isAccountNonLocked;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        isAccountNonLocked = accountNonLocked;
+    }
+
+    public boolean isCredentialsNonExpired() {
+        return isCredentialsNonExpired;
+    }
+
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        isCredentialsNonExpired = credentialsNonExpired;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 }

@@ -8,32 +8,37 @@ import android.arch.persistence.room.PrimaryKey;
 public class Truck {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")
-    int _id;
+    public int _id;
+
+    public Long getId() {
+        return id;
+    }
+
     @ColumnInfo(name = "id")
 
-    Long id;
+    public Long id;
     @ColumnInfo(name = "license_plate_number")
 
-    String licensePlateNumber;
+    public String licensePlateNumber;
 
     @ColumnInfo(name = "driver_id")
 
-    Long driverId;
+    public Long driverId;
     @ColumnInfo(name = "is_trailer")
 
-    boolean isTrailer;
+    public boolean isTrailer;
     @ColumnInfo(name = "available_tonage")
 
-    Double availableTonage;
+    public Double availableTonage;
     @ColumnInfo(name = "photo_Url")
 
-    String photoUrl;
+    public String photoUrl;
     @ColumnInfo(name = "insurance_sticker")
 
-    String insuranceSticker;
+    public String insuranceSticker;
     @ColumnInfo(name = "ntsa_certificate_number")
 
-    String ntsaCertificateNumber;
+    public String ntsaCertificateNumber;
 
     public int get_id() {
         return _id;

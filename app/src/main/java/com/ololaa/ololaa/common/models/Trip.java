@@ -12,64 +12,64 @@ public class Trip {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")
 
-    int _id;
+    public int _id;
     @ColumnInfo(name = "id")
 
-    Long id;
+    public Long id;
     @ColumnInfo(name = "truck_id")
 
-    Long truck_id;
+    public Long truck_id;
     @ColumnInfo(name = "driver_id")
 
-    Long driver_id;
+    public Long driver_id;
     @ColumnInfo(name = "first_available_date")
 
-    Date firstAvailableDate;
+    public Date firstAvailableDate;
     @ColumnInfo(name = "last_available_date")
 
-    Date lastAvailableDate;
+    public Date lastAvailableDate;
     @ColumnInfo(name = "available_tonage")
 
-    Double availableTonage;
+    public Double availableTonage;
     @Ignore
 
-    AppUser cargoMover;
+    public AppUser cargoMover;
     @ColumnInfo(name = "cargo_mover_name")
-    String cargoMoverName;
+    public String cargoMoverName;
     @ColumnInfo(name = "cargo_mover_number")
-    String cargoMoverNumber;
+    public String cargoMoverNumber;
 
     @ColumnInfo(name = "cargo_type")
-    String cargoType;
+    public String cargoType;
     @ColumnInfo(name = "transport_fees")
-    Double transportFees;
+    public Double transportFees;
     @ColumnInfo(name = "is_available")
 
-    Boolean isAvailable = true;
+    public Boolean isAvailable = true;
     @ColumnInfo(name = "cargo_picture_url")
 
-    String cargoPictureUrl;
+    public String cargoPictureUrl;
     @ColumnInfo(name = "trip_start_name")
 
-    String tripStartName;
+    public String tripStartName;
     @ColumnInfo(name = "trip_end_name")
 
-    String tripEndName;
+    public String tripEndName;
     @ColumnInfo(name = "collection_point_name")
 
-    String collectionPointName;
+    public String collectionPointName;
     @ColumnInfo(name = "drop_off_point_name")
 
-    String dropOffPointName;
+    public String dropOffPointName;
 
     @Ignore
-    Location collectionPoint;
+    public Location collectionPoint;
     @Ignore
 
-    Location dropOffPoint;
+    public Location dropOffPoint;
     @Ignore
 
-    Location tripStart;
+    public Location tripStart;
 
     public String getCargoMoverName() {
         return cargoMoverName;

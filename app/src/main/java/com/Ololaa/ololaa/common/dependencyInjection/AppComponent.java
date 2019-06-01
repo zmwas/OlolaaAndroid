@@ -13,12 +13,14 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Component(modules = {
         AndroidInjectionModule.class,
         AndroidSupportInjectionModule.class,
+        SharedPrefsModule.class,
         ApiModule.class,
         RoomModule.class,
         ExecutorModule.class,
         ViewModelModule.class,
         ActivityModule.class,
-        FragmentsModule.class
+        FragmentsModule.class,
+        WendyModule.class
 })
 public interface AppComponent {
 

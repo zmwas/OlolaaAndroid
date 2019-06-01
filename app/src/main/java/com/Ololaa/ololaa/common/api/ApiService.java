@@ -4,6 +4,7 @@ import com.ololaa.ololaa.common.models.AppUser;
 import com.ololaa.ololaa.common.models.Driver;
 import com.ololaa.ololaa.common.models.Trip;
 import com.ololaa.ololaa.common.models.Truck;
+import com.ololaa.ololaa.common.requests.AuthResponse;
 import com.ololaa.ololaa.common.requests.CreateTripRequest;
 import com.ololaa.ololaa.common.requests.CreateUserRequest;
 import com.ololaa.ololaa.common.requests.FilterTripsRequest;
@@ -27,7 +28,7 @@ public interface ApiService {
     Call<AppUser> signUp(@Body CreateUserRequest request);
 
     @POST("v1/auth/login")
-    Call<AppUser> login(@Body LoginRequest request);
+    Call<AuthResponse> login(@Body LoginRequest request);
 
     @POST("v1/trip")
     Call<Trip> createTrip(@Body CreateTripRequest request);
@@ -49,9 +50,7 @@ public interface ApiService {
                             @Part("driverId") RequestBody driverId,
                             @Part("isTrailer") RequestBody isTrailer,
                             @Part("availableTonage") RequestBody availableTonage,
-                            @Part("ntsaCertificateNumber") RequestBody ntsaCertificateNumber,
-                            @Part("transporterId") RequestBody transporterId
-
+                            @Part("ntsaCertificateNumber") RequestBody ntsaCertificateNumber
     );
 
     @POST("v1/driver")
@@ -59,9 +58,7 @@ public interface ApiService {
                               @Part("name") RequestBody name,
                               @Part("drivingLicense") RequestBody drivingLicense,
                               @Part("drivingLicenseType") RequestBody drivingLicenseType,
-                              @Part("idNumber") RequestBody idNumber,
-                              @Part("truckId") RequestBody truckId,
-                              @Part("transporterId") RequestBody transporterId
+                              @Part("idNumber") RequestBody idNumber
     );
 
     @GET("v1/truck")
