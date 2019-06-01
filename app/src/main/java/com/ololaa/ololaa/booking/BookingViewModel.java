@@ -1,10 +1,13 @@
 package com.ololaa.ololaa.booking;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
 import com.ololaa.ololaa.common.models.Trip;
 import com.ololaa.ololaa.common.requests.FilterTripsRequest;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -70,7 +73,7 @@ public class BookingViewModel extends ViewModel {
         return request;
     }
 
-    public void filterTrips() {
-        bookingRepository.filterTrips(request());
+    public LiveData<List<Trip>> filterTrips() {
+        return bookingRepository.filterTrips(request());
     }
 }

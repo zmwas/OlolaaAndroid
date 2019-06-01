@@ -32,7 +32,6 @@
         <activity android:name=".booking.BookingDetailsActivity" />
         <activity android:name=".booking.CreateBookingActivity" />
         <activity android:name=".booking.ListBookingsActivity" />
-        <activity android:name=".booking.FilteredTripsActivity" />
         <activity android:name=".user.LoginActivity" />
         <activity android:name=".user.RegisterUserActivity" />
     </application>
