@@ -79,5 +79,7 @@ public interface ApiService {
     @PUT("v1/trip")
     Call<Trip> updateTripPrice(@Body UpdatePriceRequest request);
 
+    @GET("v1/trip/{id}")
+    Call<Trip> fetchBooking(Long id);
 
 }

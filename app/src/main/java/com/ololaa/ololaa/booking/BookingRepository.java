@@ -25,6 +25,7 @@ public class BookingRepository {
     ApiService apiService;
     TripDao tripDao;
     MutableLiveData<List<Trip>> trips = new MutableLiveData<>();
+    MutableLiveData<Trip> trip = new MutableLiveData<>();
 
     @Inject
     public BookingRepository(ApiService apiService, TripDao tripDao) {
@@ -102,4 +103,21 @@ public class BookingRepository {
     }
 
 
+    public LiveData<Trip> fetchBooking(Long id) {
+        Call<Trip> fetchBooking = apiService.fetchBooking(id);
+        fetchBooking.enqueue(new Callback<Trip>() {
+            @Override
+            public void onResponse(Call<Trip> call, Response<Trip> response) {
+                if (response.isSuccessful()) {
+                    trip.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Trip> call, Throwable t) {
+
+            }
+        });
+        return trip;
+    }
 }

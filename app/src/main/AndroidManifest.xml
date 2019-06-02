@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme"
         android:name=".OlolaaApp"
         >
-        <activity android:name=".MainActivity">
+            <activity android:name=".user.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,8 +32,15 @@
         <activity android:name=".booking.CargoBookingDetailsActivity" />
         <activity android:name=".booking.CreateBookingActivity" />
         <activity android:name=".booking.ListBookingsActivity" />
-        <activity android:name=".user.LoginActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".user.RegisterUserActivity" />
+
+        <service android:name=".common.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>

@@ -98,6 +98,10 @@ public class BookingViewModel extends ViewModel {
         cargoMover.set(trip.getCargoMover().getCompanyName());
         telephone.set(trip.getCargoMover().getPhoneNumber());
         email.set(trip.getCargoMover().getEmail());
+        agreedPrice.set(String.valueOf(trip.getTransportFees()));
+    }
 
+    public LiveData<Trip> fetchBooking(Long id) {
+        return bookingRepository.fetchBooking(id);
     }
 }
