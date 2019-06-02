@@ -167,7 +167,7 @@
                         android:paddingStart="20dp"
                         android:paddingEnd="20dp"
                         android:paddingBottom="10dp"
-                        android:text="@string/first_available_date"
+                        android:text="First Collection Date"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/delivery_label" />
 
@@ -187,7 +187,7 @@
                         android:paddingStart="20dp"
                         android:paddingEnd="20dp"
                         android:paddingBottom="10dp"
-                        android:text="@string/last_available_date"
+                        android:text="@string/last_collection_date"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/first_date_label" />
 

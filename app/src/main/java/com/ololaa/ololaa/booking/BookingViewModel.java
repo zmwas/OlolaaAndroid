@@ -12,8 +12,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import static com.ololaa.ololaa.common.Utils.formatDate;
-
 public class BookingViewModel extends ViewModel {
     public ObservableField<String> cargoType = new ObservableField<>();
     public ObservableField<String> cargoPictureUrl = new ObservableField<>();
@@ -95,8 +93,8 @@ public class BookingViewModel extends ViewModel {
         tonage.set(String.valueOf(tonnes));
         collectionPoint.set(trip.getCollectionPoint().getName());
         dropOffPoint.set(trip.getDropOffPoint().getName());
-        firstCollectionDate.set(formatDate(trip.getFirstAvailableDate()));
-        lastCollectionDate.set(formatDate(trip.getLastAvailableDate()));
+        firstCollectionDate.set(trip.getFirstCollectionDate());
+        lastCollectionDate.set(trip.getLastCollectionDate());
         cargoMover.set(trip.getCargoMover().getCompanyName());
         telephone.set(trip.getCargoMover().getPhoneNumber());
         email.set(trip.getCargoMover().getEmail());

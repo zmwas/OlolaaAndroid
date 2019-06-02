@@ -17,6 +17,8 @@ public class TripViewModel extends ViewModel {
     public ObservableField<String> truckType = new ObservableField<>();
     public ObservableField<String> collectionPoint = new ObservableField<>();
     public ObservableField<String> collectionDate = new ObservableField<>();
+    public ObservableField<String> collectionDate2 = new ObservableField<>();
+
     public ObservableField<String> transporter = new ObservableField<>();
     public ObservableField<String> tonage = new ObservableField<>();
     public ObservableField<String> telephone = new ObservableField<>();
@@ -102,7 +104,8 @@ public class TripViewModel extends ViewModel {
         truckType.set(trip.getTruck().getTruckType());
         tonage.set(String.valueOf(trip.getAvailableTonage()));
         collectionPoint.set(trip.getCollectionPoint().getName());
-        collectionDate.set(formatDate(trip.getFirstAvailableDate()));
+        collectionDate.set(trip.getFirstAvailableDate());
+        collectionDate2.set(trip.getLastAvailableDate());
         driver.set(trip.getDriver().getName());
         kraPin.set(trip.getTransporter().getKraPin());
         telephone.set(trip.getTransporter().getPhoneNumber());

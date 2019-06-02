@@ -67,4 +67,5 @@
     <string name="payments">Payments</string>
     <string name="post_a_trip">Post a Trip</string>
     <string name="book_a_trip">Book a trip</string>
+    <string name="last_collection_date">Last Collection Date</string>
 </resources>

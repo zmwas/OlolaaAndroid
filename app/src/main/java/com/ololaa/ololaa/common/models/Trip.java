@@ -5,8 +5,6 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.util.Date;
-
 @Entity
 public class Trip {
     @PrimaryKey(autoGenerate = true)
@@ -24,10 +22,10 @@ public class Trip {
     public Long driver_id;
     @ColumnInfo(name = "first_available_date")
 
-    public Date firstAvailableDate;
+    public String firstAvailableDate;
     @ColumnInfo(name = "last_available_date")
 
-    public Date lastAvailableDate;
+    public String lastAvailableDate;
     @ColumnInfo(name = "available_tonage")
 
     public Double availableTonage;
@@ -68,6 +66,13 @@ public class Trip {
     @ColumnInfo(name = "weight")
     Double weight;
 
+    @ColumnInfo(name = "first_collection_date")
+
+    public String firstCollectionDate;
+    @ColumnInfo(name = "last_collection_date")
+
+    public String lastCollectionDate;
+    @ColumnInfo(name = "available_tonage")
 
     @Ignore
     public Location collectionPoint;
@@ -168,19 +173,19 @@ public class Trip {
         this.driver_id = driver_id;
     }
 
-    public Date getFirstAvailableDate() {
+    public String getFirstAvailableDate() {
         return firstAvailableDate;
     }
 
-    public void setFirstAvailableDate(Date firstAvailableDate) {
+    public void setFirstAvailableDate(String firstAvailableDate) {
         this.firstAvailableDate = firstAvailableDate;
     }
 
-    public Date getLastAvailableDate() {
+    public String getLastAvailableDate() {
         return lastAvailableDate;
     }
 
-    public void setLastAvailableDate(Date lastAvailableDate) {
+    public void setLastAvailableDate(String lastAvailableDate) {
         this.lastAvailableDate = lastAvailableDate;
     }
 
@@ -322,5 +327,21 @@ public class Trip {
 
     public void setDriver(Driver driver) {
         this.driver = driver;
+    }
+
+    public String getFirstCollectionDate() {
+        return firstCollectionDate;
+    }
+
+    public void setFirstCollectionDate(String firstCollectionDate) {
+        this.firstCollectionDate = firstCollectionDate;
+    }
+
+    public String getLastCollectionDate() {
+        return lastCollectionDate;
+    }
+
+    public void setLastCollectionDate(String lastCollectionDate) {
+        this.lastCollectionDate = lastCollectionDate;
     }
 }
