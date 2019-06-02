@@ -1,15 +1,15 @@
 package com.ololaa.ololaa.common.dependencyInjection;
 
 import com.ololaa.ololaa.MainActivity;
-import com.ololaa.ololaa.booking.BookingDetailsActivity;
+import com.ololaa.ololaa.booking.CargoBookingDetailsActivity;
 import com.ololaa.ololaa.booking.CreateBookingActivity;
 import com.ololaa.ololaa.booking.FilterTripsActivity;
 import com.ololaa.ololaa.driver.CreateDriverActivity;
 import com.ololaa.ololaa.driver.DriverDetailActivity;
 import com.ololaa.ololaa.driver.DriverListActivity;
+import com.ololaa.ololaa.trip.BookedTripListActivity;
 import com.ololaa.ololaa.trip.CreateTripActivity;
 import com.ololaa.ololaa.trip.TripDetailActivity;
-import com.ololaa.ololaa.trip.TripListActivity;
 import com.ololaa.ololaa.truck.CreateTruckActivity;
 import com.ololaa.ololaa.truck.TruckDetailActivity;
 import com.ololaa.ololaa.truck.TruckListActivity;
@@ -26,7 +26,7 @@ public abstract class ActivityModule {
     abstract MainActivity mainActivity();
 
     @ContributesAndroidInjector()
-    abstract BookingDetailsActivity bookingDetailsActivity();
+    abstract CargoBookingDetailsActivity bookingDetailsActivity();
 
 
     @ContributesAndroidInjector()
@@ -58,7 +58,7 @@ public abstract class ActivityModule {
 
 
     @ContributesAndroidInjector()
-    abstract TripListActivity tripListActivity();
+    abstract BookedTripListActivity tripListActivity();
 
 
     @ContributesAndroidInjector()

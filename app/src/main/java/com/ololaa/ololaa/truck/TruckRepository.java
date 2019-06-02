@@ -25,6 +25,7 @@ public class TruckRepository {
     private TruckDao truckDao;
     private ExecutorService executorService;
     public MutableLiveData<List<Truck>> trucks = new MutableLiveData<>();
+    private Truck truck;
 
     @Inject
     public TruckRepository(ApiService apiService, TruckDao truckDao, ExecutorService executorService) {
@@ -71,6 +72,11 @@ public class TruckRepository {
 
             }
         });
+    }
+
+    public Truck getTruck(Long id) {
+        executorService.execute(() -> truck = truckDao.getById(id));
+        return truck;
     }
 
     LiveData<List<Truck>> fetchTrucks() {

@@ -11,4 +11,7 @@ import java.util.List;
 public interface TruckDao extends BaseDao<Truck> {
     @Query("SELECT * FROM truck")
     List<Truck> fetchTrucks();
+
+    @Query("SELECT * FROM truck WHERE id=:id")
+    Truck getById(Long id);
 }

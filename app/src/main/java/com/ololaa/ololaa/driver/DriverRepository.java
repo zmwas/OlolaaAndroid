@@ -25,6 +25,7 @@ public class DriverRepository {
     private DriverDao driverDao;
     private ExecutorService executorService;
     public MutableLiveData<List<Driver>> drivers = new MutableLiveData<>();
+    private Driver driver;
 
     @Inject
     public DriverRepository(ApiService apiService, DriverDao driverDao, ExecutorService executorService) {
@@ -68,5 +69,10 @@ public class DriverRepository {
     LiveData<List<Driver>> fetchDrivers() {
         executorService.execute(() -> drivers.postValue(driverDao.fetchDrivers()));
         return drivers;
+    }
+
+    public Driver getDriver(Long driverId) {
+        executorService.execute(() -> driver = driverDao.getById(driverId));
+        return driver;
     }
 }

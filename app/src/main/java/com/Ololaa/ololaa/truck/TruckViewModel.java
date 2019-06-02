@@ -22,6 +22,8 @@ public class TruckViewModel extends ViewModel {
     public ObservableField<String> ntsa = new ObservableField<>();
     public ObservableField<String> insuranceSticker = new ObservableField<>();
     public ObservableField<String> truckPhoto = new ObservableField<>();
+    public ObservableField<String> truckType = new ObservableField<>();
+    public ObservableField<String> errorTruckType = new ObservableField<>();
     public ObservableField<String> errorNtsa = new ObservableField<>();
     public ObservableField<Long> driverId = new ObservableField<>();
     public MutableLiveData<Boolean> showTruckPhoto = new MutableLiveData<>();
@@ -40,6 +42,7 @@ public class TruckViewModel extends ViewModel {
         truck.setLicensePlateNumber(licensePlate.get());
         truck.setNtsaCertificateNumber(ntsa.get());
         truck.setTrailer(trailer.get());
+        truck.setTruckType(truckType.get());
         if (driverId != null)
             truck.setDriverId(driverId.get());
         return truck;

@@ -54,7 +54,7 @@ public interface ApiService {
     );
 
     @POST("v1/driver")
-    Call<Driver> createDriver(@Part("photo") MultipartBody.Part photo,
+    Call<Driver> createDriver(@Part("file") MultipartBody.Part photo,
                               @Part("name") RequestBody name,
                               @Part("drivingLicense") RequestBody drivingLicense,
                               @Part("drivingLicenseType") RequestBody drivingLicenseType,

@@ -7,7 +7,7 @@ public class SharedPreferenceImpl implements SharedPrefsWrapper {
     private SharedPreferences sharedPreferences;
 
     private final Context context;
-    private static final String PREFS = "Wyat_prefs";
+    private static final String PREFS = "Ololaa_prefs";
 
     /**
      *

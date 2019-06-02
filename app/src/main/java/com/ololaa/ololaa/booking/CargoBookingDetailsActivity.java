@@ -1,4 +1,4 @@
-package com.ololaa.ololaa.trip;
+package com.ololaa.ololaa.booking;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
@@ -9,27 +9,28 @@ import android.support.v7.app.AppCompatActivity;
 import com.ololaa.ololaa.OlolaaViewModelFactory;
 import com.ololaa.ololaa.R;
 import com.ololaa.ololaa.common.models.Trip;
-import com.ololaa.ololaa.databinding.FragmentAvailableTruckBinding;
+import com.ololaa.ololaa.databinding.FragmentBookingBinding;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjection;
+
 import static com.ololaa.ololaa.Constants.TRIP;
 
-public class TripDetailActivity extends AppCompatActivity {
-
-    FragmentAvailableTruckBinding binding;
+public class CargoBookingDetailsActivity extends AppCompatActivity {
+    FragmentBookingBinding binding;
     @Inject
     OlolaaViewModelFactory factory;
-    TripViewModel viewModel;
+    BookingViewModel viewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.fragment_available_truck);
-        viewModel = ViewModelProviders.of(this, factory).get(TripViewModel.class);
+        AndroidInjection.inject(this);
+        binding = DataBindingUtil.setContentView(this, R.layout.fragment_booking);
+        viewModel = ViewModelProviders.of(this, factory).get(BookingViewModel.class);
         binding.setViewModel(viewModel);
         Trip trip = (Trip) getIntent().getSerializableExtra(TRIP);
         viewModel.populateDetails(trip);
     }
-
 }

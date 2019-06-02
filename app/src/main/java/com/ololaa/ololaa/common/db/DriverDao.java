@@ -11,4 +11,6 @@ import java.util.List;
 public interface DriverDao extends BaseDao<Driver> {
     @Query("SELECT * FROM driver")
     List<Driver> fetchDrivers();
+    @Query("SELECT * FROM driver WHERE id=:driverId")
+    Driver getById(Long driverId);
 }

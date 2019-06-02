@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
@@ -144,7 +145,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:hint="@string/first_available_date"
+                android:hint="@string/first_collection_date"
                 android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorFirstAvailableDate}"
                 app:errorEnabled="true"
@@ -154,8 +155,9 @@
                     android:id="@+id/first_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/first_available_date"
-                    android:text="@={viewModel.firstAvailableDate}" />
+                    android:hint="@string/first_collection_date"
+                    bind:date="@{viewModel.firstAvailableDate}"
+                    />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -163,7 +165,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:hint="@string/last_available_date"
+                android:hint="@string/last_collection_date"
                 android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorLastAvailableDate}"
                 app:errorEnabled="true"
@@ -173,8 +175,9 @@
                     android:id="@+id/last_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/last_available_date"
-                    android:text="@={viewModel.lastAvailableDate}" />
+                    android:hint="@string/last_collection_date"
+                    bind:date="@{viewModel.lastAvailableDate}"
+                    />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.button.MaterialButton

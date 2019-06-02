@@ -3,9 +3,14 @@ package com.ololaa.ololaa.trip;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
+import com.ololaa.ololaa.common.models.Trip;
 import com.ololaa.ololaa.common.requests.CreateTripRequest;
 
+import java.util.Date;
+
 import javax.inject.Inject;
+
+import static com.ololaa.ololaa.common.Utils.formatDate;
 
 public class TripViewModel extends ViewModel {
     public ObservableField<String> truck = new ObservableField<>();
@@ -28,9 +33,9 @@ public class TripViewModel extends ViewModel {
     public ObservableField<String> errorDestination = new ObservableField<>();
     public ObservableField<String> availableTonage = new ObservableField<>();
     public ObservableField<String> errorAvailableTonage = new ObservableField<>();
-    public ObservableField<String> firstAvailableDate = new ObservableField<>();
+    public ObservableField<Date> firstAvailableDate = new ObservableField<>();
     public ObservableField<String> errorFirstAvailableDate = new ObservableField<>();
-    public ObservableField<String> lastAvailableDate = new ObservableField<>();
+    public ObservableField<Date> lastAvailableDate = new ObservableField<>();
     public ObservableField<String> errorLastAvailableDate = new ObservableField<>();
     public ObservableField<Long> driverId = new ObservableField<>();
     public ObservableField<Long> truckId = new ObservableField<>();
@@ -42,12 +47,11 @@ public class TripViewModel extends ViewModel {
         this.tripRepository = tripRepository;
     }
 
-
     public CreateTripRequest request() {
         CreateTripRequest request = new CreateTripRequest();
         request.setAvailableTonage(Double.valueOf(availableTonage.get()));
-        request.setFirstAvailableDate(firstAvailableDate.get());
-        request.setLastAvailableDate(lastAvailableDate.get());
+        request.setFirstAvailableDate(formatDate(firstAvailableDate.get()));
+        request.setLastAvailableDate(formatDate(lastAvailableDate.get()));
         request.setTripDestination(destination.get());
         request.setTripStart(startingLocation.get());
         request.setDriverId(driverId.get());
@@ -64,11 +68,11 @@ public class TripViewModel extends ViewModel {
         if (availableTonage.get() == null || availableTonage.get().isEmpty()) {
             errorAvailableTonage.set("Cannot be empty");
             return false;
-        } else if (firstAvailableDate.get() == null || firstAvailableDate.get().isEmpty()) {
+        } else if (firstAvailableDate.get() == null) {
             errorFirstAvailableDate.set("Cannot be empty");
             return false;
 
-        } else if (lastAvailableDate.get() == null || lastAvailableDate.get().isEmpty()) {
+        } else if (lastAvailableDate.get() == null ) {
             errorLastAvailableDate.set("Cannot be empty");
             return false;
 
@@ -93,5 +97,17 @@ public class TripViewModel extends ViewModel {
         return true;
     }
 
+    void populateDetails(Trip trip) {
+        transporter.set(trip.getTransporter().getCompanyName());
+        truckType.set(trip.getTruck().getTruckType());
+        tonage.set(String.valueOf(trip.getAvailableTonage()));
+        collectionPoint.set(trip.getCollectionPoint().getName());
+        collectionDate.set(formatDate(trip.getFirstAvailableDate()));
+        driver.set(trip.getDriver().getName());
+        kraPin.set(trip.getTransporter().getKraPin());
+        telephone.set(trip.getTransporter().getPhoneNumber());
+        email.set(trip.getTransporter().getEmail());
+        callMade.set(false);
+    }
 
 }

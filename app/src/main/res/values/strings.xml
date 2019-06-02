@@ -59,4 +59,12 @@
     <string name="from">From</string>
     <string name="to">To</string>
     <string name="depature">Depature</string>
+    <string name="first_collection_date">First Collection Date</string>
+    <string name="last_collection_date">Last Collection Date</string>
+    <string name="bookings">Bookings</string>
+    <string name="fleet">Fleet</string>
+    <string name="drivers">Drivers</string>
+    <string name="payments">Payments</string>
+    <string name="post_a_trip">Post a Trip</string>
+    <string name="book_a_trip">Book a trip</string>
 </resources>

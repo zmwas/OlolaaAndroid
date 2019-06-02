@@ -62,6 +62,13 @@ public class Trip {
 
     public String dropOffPointName;
 
+    @ColumnInfo(name = "units")
+    Double units;
+
+    @ColumnInfo(name = "weight")
+    Double weight;
+
+
     @Ignore
     public Location collectionPoint;
     @Ignore
@@ -70,6 +77,24 @@ public class Trip {
     @Ignore
 
     public Location tripStart;
+
+    @Ignore
+    Truck truck;
+
+    @Ignore
+    Driver driver;
+
+    @Ignore
+
+    Location tripDestination;
+
+    @Ignore
+
+    AppUser transporter;
+
+    @Ignore
+    Boolean isBooked;
+
 
     public String getCargoMoverName() {
         return cargoMoverName;
@@ -110,23 +135,6 @@ public class Trip {
     public void setBooked(Boolean booked) {
         isBooked = booked;
     }
-
-    @Ignore
-
-    Location tripDestination;
-
-    @Ignore
-
-    AppUser transporter;
-
-    @ColumnInfo(name = "units")
-    Double units;
-
-    @ColumnInfo(name = "weight")
-    Double weight;
-
-    @Ignore
-    Boolean isBooked;
 
     public int get_id() {
         return _id;
@@ -298,5 +306,21 @@ public class Trip {
 
     public String getTripDesc() {
         return getTripStartName() + "-" + getTripEndName();
+    }
+
+    public Truck getTruck() {
+        return truck;
+    }
+
+    public void setTruck(Truck truck) {
+        this.truck = truck;
+    }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 }

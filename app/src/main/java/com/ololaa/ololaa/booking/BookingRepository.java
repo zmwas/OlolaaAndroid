@@ -82,7 +82,7 @@ public class BookingRepository {
         return trips;
     }
 
-    public LiveData<List<Trip>> fetchBookings() {
+    LiveData<List<Trip>> fetchBookings() {
         Call<List<Trip>> fetchBookings = apiService.fetchBookings();
 
         fetchBookings.enqueue(new Callback<List<Trip>>() {
@@ -100,4 +100,6 @@ public class BookingRepository {
         });
         return trips;
     }
+
+
 }

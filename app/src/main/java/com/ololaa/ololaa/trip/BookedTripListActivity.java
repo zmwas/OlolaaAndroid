@@ -1,4 +1,4 @@
-package com.ololaa.ololaa.booking;
+package com.ololaa.ololaa.trip;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -13,8 +13,12 @@ import android.view.View;
 
 import com.ololaa.ololaa.OlolaaViewModelFactory;
 import com.ololaa.ololaa.R;
+import com.ololaa.ololaa.booking.BookingCallBack;
+import com.ololaa.ololaa.booking.BookingViewModel;
+import com.ololaa.ololaa.booking.BookingsAdapter;
 import com.ololaa.ololaa.common.models.Trip;
 import com.ololaa.ololaa.databinding.FragmentBookingsListBinding;
+import com.ololaa.ololaa.truck.TruckDetailActivity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -25,7 +29,7 @@ import dagger.android.AndroidInjection;
 
 import static com.ololaa.ololaa.Constants.TRIP;
 
-public class ListBookingsActivity extends AppCompatActivity implements BookingCallBack {
+public class BookedTripListActivity extends AppCompatActivity implements BookingCallBack {
     FragmentBookingsListBinding binding;
     @Inject
     OlolaaViewModelFactory factory;
@@ -43,6 +47,7 @@ public class ListBookingsActivity extends AppCompatActivity implements BookingCa
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         viewModel = ViewModelProviders.of(this, factory).get(BookingViewModel.class);
+
         viewModel.fetchBookings().observe(this, new Observer<List<Trip>>() {
             @Override
             public void onChanged(@Nullable List<Trip> trips) {
@@ -59,8 +64,9 @@ public class ListBookingsActivity extends AppCompatActivity implements BookingCa
 
     @Override
     public void onItemClick(int position, Trip trip, View v) {
-        Intent intent = new Intent(this, CargoBookingDetailsActivity.class);
+        Intent intent = new Intent(this, TruckDetailActivity.class);
         intent.putExtra(TRIP, (Serializable) trip);
         startActivity(intent);
     }
+
 }

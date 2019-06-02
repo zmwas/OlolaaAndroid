@@ -40,6 +40,9 @@ public class Truck {
 
     public String ntsaCertificateNumber;
 
+    @ColumnInfo(name = "truck_type")
+    public String truckType;
+
     public int get_id() {
         return _id;
     }
@@ -106,5 +109,13 @@ public class Truck {
 
     public void setNtsaCertificateNumber(String ntsaCertificateNumber) {
         this.ntsaCertificateNumber = ntsaCertificateNumber;
+    }
+
+    public String getTruckType() {
+        return truckType;
+    }
+
+    public void setTruckType(String truckType) {
+        this.truckType = truckType;
     }
 }

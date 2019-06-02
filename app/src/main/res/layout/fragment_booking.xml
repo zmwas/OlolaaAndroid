@@ -4,6 +4,7 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.ololaa.ololaa.booking.BookingViewModel" />
@@ -11,332 +12,337 @@
         <import type="android.view.View" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-        <ImageView
-            android:id="@+id/images"
-            android:layout_width="match_parent"
-            android:layout_height="256dp"
-            bind:imageUrl="@{viewModel.cargoPictureUrl}"
-            android:layout_marginBottom="10dp" />
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="10dp">
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/cargo_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/cargo_type"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/details" />
-
-                <TextView
-                    android:id="@+id/cargo_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@{viewModel.cargoType}"
-                    app:layout_constraintStart_toEndOf="@+id/cargo_label"
-                    app:layout_constraintTop_toTopOf="@id/details" />
-
-                <TextView
-                    android:id="@+id/unit_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/unit_weight"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cargo_label" />
-
-                <TextView
-                    android:id="@+id/unit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@{viewModel.weight}"
-                    app:layout_constraintStart_toEndOf="@+id/unit_label"
-                    app:layout_constraintTop_toTopOf="@id/cargo_type" />
-
-                <TextView
-                    android:id="@+id/number_units_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/number_of_units"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/unit_label" />
-
-                <TextView
-                    android:id="@+id/number_units"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@{viewModel.numberUnits}"
-                    app:layout_constraintStart_toEndOf="@+id/number_units_label"
-                    app:layout_constraintTop_toBottomOf="@id/cargo_type" />
-
-                <TextView
-                    android:id="@+id/availableTonage_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/tonage"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/number_units_label" />
-
-                <TextView
-                    android:id="@+id/availableTonage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@{viewModel.tonage}"
-                    app:layout_constraintStart_toEndOf="@+id/availableTonage_label"
-                    app:layout_constraintTop_toBottomOf="@id/number_units" />
-
-                <TextView
-                    android:id="@+id/collection_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/collection_point"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/availableTonage_label" />
-
-                <TextView
-                    android:id="@+id/collection"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@{viewModel.collectionPoint}"
-                    app:layout_constraintStart_toEndOf="@+id/collection_label"
-                    app:layout_constraintTop_toBottomOf="@id/availableTonage" />
-
-                <TextView
-                    android:id="@+id/delivery_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/delivery_point"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/collection_label" />
-
-                <TextView
-                    android:id="@+id/delivery"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@{viewModel.dropOffPoint}"
-                    app:layout_constraintStart_toEndOf="@+id/collection_label"
-                    app:layout_constraintTop_toBottomOf="@id/collection" />
-
-                <TextView
-                    android:id="@+id/first_date_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/first_available_date"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/delivery_label" />
-
-                <TextView
-                    android:id="@+id/first_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@{viewModel.firstAvailableDate}"
-                    app:layout_constraintStart_toEndOf="@+id/first_date_label"
-                    app:layout_constraintTop_toBottomOf="@id/delivery" />
-
-                <TextView
-                    android:id="@+id/last_date_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/last_available_date"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/first_date_label" />
-
-                <TextView
-                    android:id="@+id/last_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@{viewModel.lastAvailableDate}"
-                    app:layout_constraintStart_toEndOf="@+id/last_date_label"
-                    app:layout_constraintTop_toBottomOf="@id/last_date" />
-
-                <TextView
-                    android:id="@+id/cargo_mover_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/cargo_mover"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/last_date_label" />
-
-                <TextView
-                    android:id="@+id/cargo_mover"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@{viewModel.cargoMover}"
-                    app:layout_constraintStart_toEndOf="@+id/cargo_mover_label"
-                    app:layout_constraintTop_toBottomOf="@id/last_date" />
-
-                <TextView
-                    android:id="@+id/id_number_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/id_number"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cargo_mover_label" />
-
-                <TextView
-                    android:id="@+id/id_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@{viewModel.idNumber}"
-                    app:layout_constraintStart_toEndOf="@+id/id_number_label"
-                    app:layout_constraintTop_toBottomOf="@id/cargo_mover" />
-
-                <TextView
-                    android:id="@+id/telephone_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/phone_number"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/id_number_label" />
-
-                <TextView
-                    android:id="@+id/telephone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@{viewModel.telephone}"
-                    app:layout_constraintStart_toEndOf="@+id/telephone_label"
-                    app:layout_constraintTop_toBottomOf="@id/id_number" />
-
-                <TextView
-                    android:id="@+id/email_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/phone_number"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/telephone_label" />
-
-                <TextView
-                    android:id="@+id/email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="@{viewModel.email}"
-                    app:layout_constraintStart_toEndOf="@+id/email_label"
-                    app:layout_constraintTop_toBottomOf="@id/telephone" />
-
-            </android.support.constraint.ConstraintLayout>
-
-
-        </android.support.v7.widget.CardView>
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:visibility="@{viewModel.callMade?View.GONE:View.VISIBLE}">
-
-            <android.support.design.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:text="@string/call_cargo_mover"
-                android:visibility="@{viewModel.callMade?View.GONE:View.VISIBLE}"
-
-                />
-
-            <android.support.design.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/reject_booking"
-                android:visibility="@{viewModel.callMade?View.GONE:View.VISIBLE}"
-
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="10dp"
-            android:visibility="@{viewModel.callMade?View.VISIBLE:View.GONE}">
+            android:padding="10dp">
 
+            <ImageView
+                android:id="@+id/images"
+                android:layout_width="match_parent"
+                android:layout_height="256dp"
+                android:layout_marginBottom="10dp"
+                bind:imageUrl="@{viewModel.cargoPictureUrl}" />
 
-            <EditText
-                android:id="@+id/agreed_price"
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:hint="@string/enter_agreed_price"
-                android:text="@={viewModel.agreedPrice}"
-                android:visibility="@{viewModel.callMade?View.VISIBLE:View.GONE}"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp">
 
-                />
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <android.support.design.button.MaterialButton
-                android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/cargo_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/cargo_type"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/details" />
+
+                    <TextView
+                        android:id="@+id/cargo_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@{viewModel.cargoType}"
+                        app:layout_constraintStart_toEndOf="@+id/cargo_label"
+                        app:layout_constraintTop_toTopOf="@id/details" />
+
+                    <TextView
+                        android:id="@+id/unit_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/unit_weight"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/cargo_label" />
+
+                    <TextView
+                        android:id="@+id/unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@{viewModel.weight}"
+                        app:layout_constraintStart_toEndOf="@+id/unit_label"
+                        app:layout_constraintTop_toTopOf="@id/cargo_type" />
+
+                    <TextView
+                        android:id="@+id/number_units_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/number_of_units"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/unit_label" />
+
+                    <TextView
+                        android:id="@+id/number_units"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@{viewModel.numberUnits}"
+                        app:layout_constraintStart_toEndOf="@+id/number_units_label"
+                        app:layout_constraintTop_toBottomOf="@id/cargo_type" />
+
+                    <TextView
+                        android:id="@+id/availableTonage_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/tonage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/number_units_label" />
+
+                    <TextView
+                        android:id="@+id/availableTonage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@{viewModel.tonage}"
+                        app:layout_constraintStart_toEndOf="@+id/availableTonage_label"
+                        app:layout_constraintTop_toBottomOf="@id/number_units" />
+
+                    <TextView
+                        android:id="@+id/collection_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/collection_point"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/availableTonage_label" />
+
+                    <TextView
+                        android:id="@+id/collection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@{viewModel.collectionPoint}"
+                        app:layout_constraintStart_toEndOf="@+id/collection_label"
+                        app:layout_constraintTop_toBottomOf="@id/availableTonage" />
+
+                    <TextView
+                        android:id="@+id/delivery_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/delivery_point"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/collection_label" />
+
+                    <TextView
+                        android:id="@+id/delivery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@{viewModel.dropOffPoint}"
+                        app:layout_constraintStart_toEndOf="@+id/collection_label"
+                        app:layout_constraintTop_toBottomOf="@id/collection" />
+
+                    <TextView
+                        android:id="@+id/first_date_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/first_available_date"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/delivery_label" />
+
+                    <TextView
+                        android:id="@+id/first_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@{viewModel.firstCollectionDate}"
+                        app:layout_constraintStart_toEndOf="@+id/first_date_label"
+                        app:layout_constraintTop_toBottomOf="@id/delivery" />
+
+                    <TextView
+                        android:id="@+id/last_date_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/last_available_date"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/first_date_label" />
+
+                    <TextView
+                        android:id="@+id/last_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@{viewModel.lastCollectionDate}"
+                        app:layout_constraintStart_toEndOf="@+id/last_date_label"
+                        app:layout_constraintTop_toBottomOf="@id/last_date" />
+
+                    <TextView
+                        android:id="@+id/cargo_mover_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/cargo_mover"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/last_date_label" />
+
+                    <TextView
+                        android:id="@+id/cargo_mover"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@{viewModel.cargoMover}"
+                        app:layout_constraintStart_toEndOf="@+id/cargo_mover_label"
+                        app:layout_constraintTop_toBottomOf="@id/last_date" />
+
+                    <TextView
+                        android:id="@+id/id_number_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/id_number"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/cargo_mover_label" />
+
+                    <TextView
+                        android:id="@+id/id_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@{viewModel.idNumber}"
+                        app:layout_constraintStart_toEndOf="@+id/id_number_label"
+                        app:layout_constraintTop_toBottomOf="@id/cargo_mover" />
+
+                    <TextView
+                        android:id="@+id/telephone_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/phone_number"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/id_number_label" />
+
+                    <TextView
+                        android:id="@+id/telephone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@{viewModel.telephone}"
+                        app:layout_constraintStart_toEndOf="@+id/telephone_label"
+                        app:layout_constraintTop_toBottomOf="@id/id_number" />
+
+                    <TextView
+                        android:id="@+id/email_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/email"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/telephone_label" />
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:text="@{viewModel.email}"
+                        app:layout_constraintStart_toEndOf="@+id/email_label"
+                        app:layout_constraintTop_toBottomOf="@id/telephone" />
+
+                </android.support.constraint.ConstraintLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/accept_transport_fee"
-                android:visibility="@{viewModel.callMade?View.VISIBLE:View.GONE}"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:visibility="@{viewModel.callMade?View.GONE:View.VISIBLE}">
 
-                />
+                <android.support.design.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/call_cargo_mover"
+                    android:visibility="@{viewModel.callMade?View.GONE:View.VISIBLE}"
+
+                    />
+
+                <android.support.design.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reject_booking"
+                    android:visibility="@{viewModel.callMade?View.GONE:View.VISIBLE}"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:visibility="@{viewModel.callMade?View.VISIBLE:View.GONE}">
+
+
+                <EditText
+                    android:id="@+id/agreed_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:hint="@string/enter_agreed_price"
+                    android:text="@={viewModel.agreedPrice}"
+                    android:visibility="@{viewModel.callMade?View.VISIBLE:View.GONE}"
+
+                    />
+
+                <android.support.design.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accept_transport_fee"
+                    android:visibility="@{viewModel.callMade?View.VISIBLE:View.GONE}"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+            </LinearLayout>
+
 
         </LinearLayout>
-
-
-    </LinearLayout>
+    </ScrollView>
 </layout>
