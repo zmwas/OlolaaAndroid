@@ -1,6 +1,7 @@
 package com.ololaa.ololaa.fetchingTasks;
 
 import com.levibostian.wendy.service.PendingTask;
+import com.levibostian.wendy.service.Wendy;
 import com.levibostian.wendy.types.PendingTaskResult;
 import com.ololaa.ololaa.common.api.ApiService;
 import com.ololaa.ololaa.common.db.DriverDao;
@@ -35,6 +36,7 @@ public class FetchDriversTask extends PendingTask {
     @Override
     public PendingTaskResult runTask() {
         successful = false;
+        Wendy.sharedInstance().addTask(this, true);
         Call<List<Driver>> fetchDrivers = apiService.fetchDrivers();
         try {
             List<Driver> drivers = fetchDrivers.execute().body();

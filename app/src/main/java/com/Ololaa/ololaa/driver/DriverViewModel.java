@@ -5,6 +5,7 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
+import com.ololaa.ololaa.common.SingleLiveEvent;
 import com.ololaa.ololaa.common.models.Driver;
 
 import java.util.List;
@@ -35,11 +36,13 @@ public class DriverViewModel extends ViewModel {
     }
 
 
+
     public Driver driver() {
         Driver driver = new Driver();
         driver.setDrivingLicense(drivingLicenseNumber.get());
         driver.setIdNumber(idNumber.get());
         driver.setName(name.get());
+        driver.setDrivingLicenseType(drivingLicenseType.get());
         if (truckId.get() != null)
             driver.setTruckId(truckId.get());
         return driver;
@@ -55,6 +58,9 @@ public class DriverViewModel extends ViewModel {
         } else if (name.get() == null || name.get().isEmpty()) {
             errorName.set("Cannot be empty");
             return false;
+        } else if (drivingLicenseType == null) {
+            errorDrivingLicenseType.set("Cannot be null");
+            return false;
         }
         return true;
     }
@@ -67,4 +73,13 @@ public class DriverViewModel extends ViewModel {
     public LiveData<List<Driver>> fetchDrivers() {
         return driverRepository.fetchDrivers();
     }
+
+    public SingleLiveEvent<Boolean> showSuccessDialog() {
+        return driverRepository.showSuccessDialog;
+    }
+
+    public SingleLiveEvent<Boolean> showProgressDialog() {
+        return driverRepository.showProgressDialog;
+    }
+
 }

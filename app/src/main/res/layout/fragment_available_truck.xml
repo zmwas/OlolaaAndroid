@@ -278,6 +278,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/accept_transport_fee"
+                android:textColor="@color/colorPrimary"
                 android:visibility="@{viewModel.callMade?View.VISIBLE:View.GONE}"
 
                 />

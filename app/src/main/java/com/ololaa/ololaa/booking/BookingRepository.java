@@ -3,6 +3,7 @@ package com.ololaa.ololaa.booking;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
+import com.ololaa.ololaa.common.SingleLiveEvent;
 import com.ololaa.ololaa.common.api.ApiService;
 import com.ololaa.ololaa.common.db.TripDao;
 import com.ololaa.ololaa.common.models.Trip;
@@ -26,6 +27,8 @@ public class BookingRepository {
     TripDao tripDao;
     MutableLiveData<List<Trip>> trips = new MutableLiveData<>();
     MutableLiveData<Trip> trip = new MutableLiveData<>();
+    public SingleLiveEvent<Boolean> showProgressDialog = new SingleLiveEvent<>();
+    public SingleLiveEvent<Boolean> showSuccessDialog = new SingleLiveEvent<>();
 
     @Inject
     public BookingRepository(ApiService apiService, TripDao tripDao) {
@@ -35,10 +38,11 @@ public class BookingRepository {
 
 
     void createBooking(Trip trip, String cargo) {
+        showProgressDialog.setValue(true);
         MediaType image = MediaType.parse("image/*");
         MediaType text = MediaType.parse("text/plain");
 
-        File cargoPhoto = new File(cargo);
+        File cargoPhoto = new File(cargo.replace("file://", ""));
         RequestBody requestBodyCargo = RequestBody.create(image, cargoPhoto);
         RequestBody cargoType = RequestBody.create(text, trip.getCargoType());
         RequestBody collectionPoint = RequestBody.create(text, trip.getCollectionPointName());
@@ -46,14 +50,22 @@ public class BookingRepository {
         RequestBody units = RequestBody.create(text, String.valueOf(trip.getUnits()));
         RequestBody weight = RequestBody.create(text, String.valueOf(trip.getWeight()));
         RequestBody tripId = RequestBody.create(text, String.valueOf(trip.getId()));
-        MultipartBody.Part photo = MultipartBody.Part.createFormData("photo", cargoPhoto.getName(), requestBodyCargo);
+        RequestBody firstCollectionDate = RequestBody.create(text, String.valueOf(trip.getFirstCollectionDate()));
+        RequestBody lastCollectionDate = RequestBody.create(text, String.valueOf(trip.getLastCollectionDate()));
 
-        Call<Trip> createBooking = apiService.createBooking(photo, cargoType, collectionPoint, dropOffPoint, units, weight, tripId);
+        MultipartBody.Part photo = MultipartBody.Part.createFormData("file", cargoPhoto.getName(), requestBodyCargo);
+
+        Call<Trip> createBooking = apiService.createBooking(photo, cargoType, collectionPoint, dropOffPoint, units, weight, tripId, firstCollectionDate, lastCollectionDate);
         createBooking.enqueue(new Callback<Trip>() {
             @Override
             public void onResponse(Call<Trip> call, Response<Trip> response) {
                 if (response.isSuccessful()) {
-                    tripDao.insert(response.body());
+                    showProgressDialog.setValue(false);
+                    showSuccessDialog.setValue(true);
+
+                } else {
+                    showSuccessDialog.setValue(false);
+
                 }
             }
 
@@ -66,11 +78,14 @@ public class BookingRepository {
     }
 
     LiveData<List<Trip>> filterTrips(FilterTripsRequest request) {
+        showProgressDialog.setValue(true);
+
         Call<List<Trip>> fetchTripsForLocation = apiService.fetchTripsForLocation(request);
         fetchTripsForLocation.enqueue(new Callback<List<Trip>>() {
             @Override
             public void onResponse(Call<List<Trip>> call, Response<List<Trip>> response) {
                 if (response.isSuccessful()) {
+                    showProgressDialog.setValue(false);
                     trips.postValue(response.body());
                 }
             }
@@ -84,12 +99,15 @@ public class BookingRepository {
     }
 
     LiveData<List<Trip>> fetchBookings() {
+        showProgressDialog.setValue(true);
         Call<List<Trip>> fetchBookings = apiService.fetchBookings();
 
         fetchBookings.enqueue(new Callback<List<Trip>>() {
             @Override
             public void onResponse(Call<List<Trip>> call, Response<List<Trip>> response) {
                 if (response.isSuccessful()) {
+                    showProgressDialog.setValue(false);
+
                     trips.postValue(response.body());
                 }
             }
@@ -104,11 +122,15 @@ public class BookingRepository {
 
 
     public LiveData<Trip> fetchBooking(Long id) {
+        showProgressDialog.setValue(true);
+
         Call<Trip> fetchBooking = apiService.fetchBooking(id);
         fetchBooking.enqueue(new Callback<Trip>() {
             @Override
             public void onResponse(Call<Trip> call, Response<Trip> response) {
                 if (response.isSuccessful()) {
+                    showProgressDialog.setValue(false);
+
                     trip.postValue(response.body());
                 }
             }

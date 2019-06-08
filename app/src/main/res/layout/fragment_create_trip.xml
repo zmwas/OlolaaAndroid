@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -26,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="@string/truck"
+                android:hint="@string/truck"
                 android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorTruck}"
                 app:errorEnabled="true"
@@ -38,9 +37,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/truck"
-                    android:inputType="text"
-
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:longClickable="false"
                     android:text="@={viewModel.truck}" />
 
             </android.support.design.widget.TextInputLayout>
@@ -61,8 +61,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/driver"
-                    android:inputType="text"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:longClickable="false"
                     android:text="@{viewModel.driver}" />
 
             </android.support.design.widget.TextInputLayout>
@@ -77,14 +79,20 @@
                 app:Error="@{viewModel.errorStartingLocation}"
                 app:errorEnabled="true">
 
-                <android.support.v7.widget.AppCompatEditText
+                <!--<android.support.v7.widget.AppCompatEditText-->
+                <!--android:id="@+id/startingLocation"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:hint="@string/starting_location"-->
+                <!--android:inputType="text"-->
+                <!--android:text="@={viewModel.startingLocation}" />-->
+
+                <fragment
                     android:id="@+id/startingLocation"
+                    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/starting_location"
-                    android:inputType="text"
-                    android:text="@={viewModel.startingLocation}" />
+                    android:layout_height="wrap_content" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -98,14 +106,21 @@
                 app:Error="@{viewModel.errorDestination}"
                 app:errorEnabled="true">
 
-                <android.support.v7.widget.AppCompatEditText
+                <!--<android.support.v7.widget.AppCompatEditText-->
+                <!--android:id="@+id/destination"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:hint="@string/destination"-->
+                <!--android:inputType="text"-->
+                <!--android:text="@={viewModel.destination}" />-->
+
+                <fragment
                     android:id="@+id/destination"
+                    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/destination"
-                    android:inputType="text"
-                    android:text="@={viewModel.destination}" />
+                    android:layout_height="wrap_content" />
+
 
             </android.support.design.widget.TextInputLayout>
 
@@ -125,7 +140,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/available_tonage"
                     android:inputType="text"
                     android:text="@={viewModel.availableTonage}" />
             </android.support.design.widget.TextInputLayout>
@@ -141,12 +155,15 @@
                 app:errorEnabled="true"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <EditText
+                <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/first_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/first_available_date"
-                    bind:date="@{viewModel.firstAvailableDate}"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:longClickable="false"
+
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -161,12 +178,15 @@
                 app:errorEnabled="true"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <EditText
+                <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/last_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/last_available_date"
-                    bind:date="@{viewModel.lastAvailableDate}"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:longClickable="false"
+
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -175,7 +195,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:onClick="@{()->viewModel.createTrip()}"
-                android:text="@string/submit" />
+                android:text="@string/submit"
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
     </ScrollView>
 </layout>

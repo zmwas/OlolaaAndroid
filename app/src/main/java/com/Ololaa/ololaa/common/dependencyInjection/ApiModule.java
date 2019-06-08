@@ -37,16 +37,15 @@ public class ApiModule {
             HttpUrl newUrl = url.newBuilder()
                     .build();
 
-            if (!request.url().encodedPath().equalsIgnoreCase("v1/auth/login")) {
+            if (request.url().encodedPath().equalsIgnoreCase("/api/v1/auth/login") || request.url().encodedPath().equalsIgnoreCase("/api/v1/auth/signup")) {
+                Request.Builder builder = request.newBuilder()
+                        .url(newUrl);
+                newRequest = builder.build();
+            } else {
                 Request.Builder builder = request.newBuilder()
                         .url(newUrl)
                         .addHeader("Authorization",
                                 "Bearer " + authToken);
-                newRequest = builder.build();
-
-            } else {
-                Request.Builder builder = request.newBuilder()
-                        .url(newUrl);
                 newRequest = builder.build();
 
             }

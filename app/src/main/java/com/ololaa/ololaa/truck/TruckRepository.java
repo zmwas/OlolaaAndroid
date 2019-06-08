@@ -3,6 +3,7 @@ package com.ololaa.ololaa.truck;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
+import com.ololaa.ololaa.common.SingleLiveEvent;
 import com.ololaa.ololaa.common.api.ApiService;
 import com.ololaa.ololaa.common.db.TruckDao;
 import com.ololaa.ololaa.common.models.Truck;
@@ -26,6 +27,9 @@ public class TruckRepository {
     private ExecutorService executorService;
     public MutableLiveData<List<Truck>> trucks = new MutableLiveData<>();
     private Truck truck;
+    public SingleLiveEvent<Boolean> showProgressDialog = new SingleLiveEvent<>();
+    public SingleLiveEvent<Boolean> showSuccessDialog = new SingleLiveEvent<>();
+
 
     @Inject
     public TruckRepository(ApiService apiService, TruckDao truckDao, ExecutorService executorService) {
@@ -36,11 +40,13 @@ public class TruckRepository {
 
 
     void createTruck(Truck truck, String truckImage, String insuranceImage) {
+        showProgressDialog.setValue(true);
+
         MediaType image = MediaType.parse("image/*");
         MediaType text = MediaType.parse("text/plain");
 
-        File truckPhoto = new File(truckImage);
-        File insuranceSticker = new File(insuranceImage);
+        File truckPhoto = new File(truckImage.replace("file://", ""));
+        File insuranceSticker = new File(insuranceImage.replace("file://", ""));
         Long driver = truck.getDriverId() == null ? Long.valueOf(0) : truck.getDriverId();
 
         RequestBody requestBodyTruck = RequestBody.create(image, truckPhoto);
@@ -63,7 +69,14 @@ public class TruckRepository {
             @Override
             public void onResponse(Call<Truck> call, Response<Truck> response) {
                 if (response.isSuccessful()) {
-                    truckDao.insert(response.body());
+                    showProgressDialog.setValue(false);
+                    showSuccessDialog.setValue(true);
+
+                    executorService.execute(() -> {
+                        truckDao.insert(response.body());
+                    });
+                } else {
+                    showSuccessDialog.setValue(false);
                 }
             }
 

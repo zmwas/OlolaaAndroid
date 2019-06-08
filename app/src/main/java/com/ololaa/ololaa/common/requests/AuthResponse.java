@@ -1,10 +1,16 @@
 package com.ololaa.ololaa.common.requests;
 
+import com.google.gson.annotations.SerializedName;
 import com.ololaa.ololaa.common.models.AppUser;
+
 
 public class AuthResponse {
     private Boolean success;
+    @SerializedName("token")
+
     public String token;
+    @SerializedName("appUser")
+
     public AppUser appUser;
 
     public Boolean getSuccess() {

@@ -4,7 +4,7 @@ import com.ololaa.ololaa.common.models.AppUser;
 import com.ololaa.ololaa.common.models.Driver;
 import com.ololaa.ololaa.common.models.Trip;
 import com.ololaa.ololaa.common.models.Truck;
-import com.ololaa.ololaa.common.requests.AuthResponse;
+import com.ololaa.ololaa.common.requests.AuthWrapper;
 import com.ololaa.ololaa.common.requests.CreateTripRequest;
 import com.ololaa.ololaa.common.requests.CreateUserRequest;
 import com.ololaa.ololaa.common.requests.FilterTripsRequest;
@@ -19,6 +19,7 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
@@ -28,33 +29,35 @@ public interface ApiService {
     Call<AppUser> signUp(@Body CreateUserRequest request);
 
     @POST("v1/auth/login")
-    Call<AuthResponse> login(@Body LoginRequest request);
+    Call<AuthWrapper> login(@Body LoginRequest request);
 
     @POST("v1/trip")
     Call<Trip> createTrip(@Body CreateTripRequest request);
-
+    @Multipart
     @POST("v1/booking")
-    Call<Trip> createBooking(@Part("file") MultipartBody.Part file,
+    Call<Trip> createBooking(@Part MultipartBody.Part file,
                              @Part("cargoType") RequestBody cargoType,
                              @Part("collectionPoint") RequestBody collectionPoint,
                              @Part("dropOffPoint") RequestBody dropOffPoint,
                              @Part("units") RequestBody units,
                              @Part("weight") RequestBody weight,
-                             @Part("tripId") RequestBody tripId
+                             @Part("tripId") RequestBody tripId,
+                             @Part("firstCollectionDate") RequestBody firstCollectionDate,
+                             @Part("lastCollectionDate") RequestBody lastCollectionDate
     );
-
+    @Multipart
     @POST("v1/truck")
-    Call<Truck> createTruck(@Part("photo") MultipartBody.Part photo,
-                            @Part("sticker") MultipartBody.Part sticker,
+    Call<Truck> createTruck(@Part MultipartBody.Part photo,
+                            @Part MultipartBody.Part sticker,
                             @Part("licensePlateNumber") RequestBody licensePlateNumber,
                             @Part("driverId") RequestBody driverId,
                             @Part("isTrailer") RequestBody isTrailer,
                             @Part("availableTonage") RequestBody availableTonage,
                             @Part("ntsaCertificateNumber") RequestBody ntsaCertificateNumber
     );
-
+    @Multipart
     @POST("v1/driver")
-    Call<Driver> createDriver(@Part("file") MultipartBody.Part photo,
+    Call<Driver> createDriver(@Part MultipartBody.Part photo,
                               @Part("name") RequestBody name,
                               @Part("drivingLicense") RequestBody drivingLicense,
                               @Part("drivingLicenseType") RequestBody drivingLicenseType,

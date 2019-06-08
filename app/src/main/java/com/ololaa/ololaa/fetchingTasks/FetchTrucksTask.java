@@ -1,6 +1,7 @@
 package com.ololaa.ololaa.fetchingTasks;
 
 import com.levibostian.wendy.service.PendingTask;
+import com.levibostian.wendy.service.Wendy;
 import com.levibostian.wendy.types.PendingTaskResult;
 import com.ololaa.ololaa.common.api.ApiService;
 import com.ololaa.ololaa.common.db.TruckDao;
@@ -35,6 +36,7 @@ public class FetchTrucksTask extends PendingTask {
     @Override
     public PendingTaskResult runTask() {
         successful = false;
+        Wendy.sharedInstance().addTask(this, true);
         Call<List<Truck>> fetchTrucks = apiService.fetchTrucks();
         try {
             List<Truck> trucks = fetchTrucks.execute().body();

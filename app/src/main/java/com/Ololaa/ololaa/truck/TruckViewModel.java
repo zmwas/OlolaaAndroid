@@ -5,6 +5,7 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
+import com.ololaa.ololaa.common.SingleLiveEvent;
 import com.ololaa.ololaa.common.models.Truck;
 
 import java.util.List;
@@ -71,6 +72,14 @@ public class TruckViewModel extends ViewModel {
 
     public LiveData<List<Truck>> fetchTrucks() {
         return truckRepository.fetchTrucks();
+    }
+
+    public SingleLiveEvent<Boolean> showSuccessDialog() {
+        return truckRepository.showSuccessDialog;
+    }
+
+    public SingleLiveEvent<Boolean> showProgressDialog() {
+        return truckRepository.showProgressDialog;
     }
 
 }

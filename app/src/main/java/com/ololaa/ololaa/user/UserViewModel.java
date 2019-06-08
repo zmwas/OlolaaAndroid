@@ -1,10 +1,12 @@
 package com.ololaa.ololaa.user;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
 import com.ololaa.ololaa.common.requests.CreateUserRequest;
 import com.ololaa.ololaa.common.requests.LoginRequest;
+import com.ololaa.ololaa.common.requests.UpdateFirebaseTokenRequest;
 
 import javax.inject.Inject;
 
@@ -97,6 +99,16 @@ public class UserViewModel extends ViewModel {
     public void login() {
         if (isLoginValid())
             userRepository.login(loginRequest());
+    }
+
+    public void updateFirebase(String token) {
+        UpdateFirebaseTokenRequest request = new UpdateFirebaseTokenRequest();
+        request.setFirebaseToken(token);
+        userRepository.updateFirebaseToken(request);
+    }
+
+    public LiveData<Enum> showSuccessDialog() {
+        return userRepository.showSuccessDialog;
     }
 
 }

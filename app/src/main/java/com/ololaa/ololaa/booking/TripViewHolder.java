@@ -15,8 +15,8 @@ public class TripViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Trip trip) {
-        binding.collectionPoint.setText(trip.getCollectionPoint().getName());
-        binding.dropoffPoint.setText(trip.getDropOffPoint().getName());
+        binding.collectionPoint.setText(trip.getTripStart().getName());
+        binding.dropoffPoint.setText(trip.getTripDestination().getName());
         binding.availableTonage.setText(String.valueOf(trip.getAvailableTonage()));
     }
 }

@@ -4,6 +4,7 @@ import com.ololaa.ololaa.MainActivity;
 import com.ololaa.ololaa.booking.CargoBookingDetailsActivity;
 import com.ololaa.ololaa.booking.CreateBookingActivity;
 import com.ololaa.ololaa.booking.FilterTripsActivity;
+import com.ololaa.ololaa.booking.ListBookingsActivity;
 import com.ololaa.ololaa.driver.CreateDriverActivity;
 import com.ololaa.ololaa.driver.DriverDetailActivity;
 import com.ololaa.ololaa.driver.DriverListActivity;
@@ -22,7 +23,7 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityModule {
 
-    @ContributesAndroidInjector(modules = FragmentsModule.class)
+    @ContributesAndroidInjector()
     abstract MainActivity mainActivity();
 
     @ContributesAndroidInjector()
@@ -42,7 +43,6 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector()
     abstract DriverDetailActivity driverDetailActivity();
-
 
 
     @ContributesAndroidInjector()
@@ -79,4 +79,7 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector()
     abstract LoginActivity loginActivity();
+
+    @ContributesAndroidInjector()
+    abstract ListBookingsActivity listBookingsActivity();
 }

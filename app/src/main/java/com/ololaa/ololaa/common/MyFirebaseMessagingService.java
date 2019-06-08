@@ -16,17 +16,11 @@ import com.ololaa.ololaa.common.models.NotificationInfo;
 
 import java.util.Map;
 
-import javax.inject.Inject;
-
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "FCM Service";
-    @Inject
-    SharedPrefsWrapper wrapper;
-
     @Override
     public void onNewToken(String s) {
         super.onNewToken(s);
-        sendRegistrationToServer(s);
 
     }
 
@@ -56,15 +50,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(0, notificationBuilder.build());
-        String role = wrapper.getString("role");
         Map<String, String> messageData = remoteMessage.getData();
         NotificationInfo notificationInfo = new NotificationInfo(messageData.get(remoteMessage.getNotification().getBody()));
-        notifyMainActivity(notificationInfo);
+//        notifyMainActivity(notificationInfo);
 
-        if (role.equals("cargoMover")) {
-            //updatePrice
-            notifyMainActivity(notificationInfo);
-        }
+//        if (role.equals("cargoMover")) {
+//            //updatePrice
+//            notifyMainActivity(notificationInfo);
+//        }
     }
 
 

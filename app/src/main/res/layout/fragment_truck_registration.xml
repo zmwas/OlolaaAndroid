@@ -39,7 +39,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/license_plate_number"
                     android:inputType="text"
                     android:text="@={viewModel.licensePlate}" />
 
@@ -63,8 +62,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/driver"
                     android:inputType="text"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:longClickable="false"
 
                     android:text="@={viewModel.driver}" />
 
@@ -85,7 +87,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/available_tonage"
                     android:inputType="text"
                     android:text="@={viewModel.availableTonage}" />
 
@@ -104,6 +105,7 @@
                 android:id="@+id/upload_truck_photo"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
                 android:text="@string/truck_photo" />
 
             <android.support.v7.widget.AppCompatImageView
@@ -111,13 +113,14 @@
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_marginBottom="8dp"
-                android:visibility="@{viewModel.showTruckPhoto? View.VISIBLE : View.GONE}"
+                android:visibility="@{viewModel.truckPhoto.get() == null? View.GONE : View.VISIBLE}"
                 app:imageUrl="@{viewModel.truckPhoto}" />
 
             <android.support.design.button.MaterialButton
                 android:id="@+id/upload_insurance_sticker"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
                 android:text="@string/insurance_sticker" />
 
             <android.support.v7.widget.AppCompatImageView
@@ -125,14 +128,14 @@
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_marginBottom="8dp"
-                android:visibility="@{viewModel.showInsuranceSticker? View.VISIBLE : View.GONE}"
+                android:visibility="@{viewModel.insuranceSticker == null? View.GONE : View.VISIBLE}"
                 app:imageUrl="@{viewModel.insuranceSticker}" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="@string/ntsa_certificate_number"
+                android:hint="@string/ntsa_certificate_number"
                 android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorNtsa}"
                 app:errorEnabled="true">
@@ -142,7 +145,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/ntsa_certificate_number"
                     android:inputType="text"
                     android:text="@={viewModel.ntsa}"
                     tools:ignore="TextFields" />
@@ -152,7 +154,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="@string/ntsa_certificate_number"
+                android:hint="Truck Type"
                 android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorTruckType}"
                 app:errorEnabled="true">
@@ -162,7 +164,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/truck_type"
                     android:inputType="text"
                     android:text="@={viewModel.truckType}"
                     tools:ignore="TextFields" />
@@ -172,6 +173,7 @@
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorPrimary"
                 android:onClick="@{()->viewModel.createTruck()}"
                 android:text="@string/submit" />
         </LinearLayout>

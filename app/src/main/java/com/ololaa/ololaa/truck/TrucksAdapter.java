@@ -14,10 +14,12 @@ import java.util.List;
 public class TrucksAdapter extends RecyclerView.Adapter<TruckViewHolder> {
     private List<Truck> trucks;
     private Context context;
+    TruckClickedCallback clickedCallback;
 
-    public TrucksAdapter(List<Truck> trucks, Context context) {
+    public TrucksAdapter(List<Truck> trucks, Context context, TruckClickedCallback clickedCallback) {
         this.trucks = trucks;
         this.context = context;
+        this.clickedCallback = clickedCallback;
     }
 
     @NonNull
@@ -32,6 +34,9 @@ public class TrucksAdapter extends RecyclerView.Adapter<TruckViewHolder> {
     public void onBindViewHolder(@NonNull TruckViewHolder truckViewHolder, int i) {
         Truck truck = trucks.get(i);
         truckViewHolder.bind(truck);
+        truckViewHolder.binding.getRoot().setOnClickListener(v -> {
+            clickedCallback.onItemClick(i, truck, v);
+        });
     }
 
     @Override

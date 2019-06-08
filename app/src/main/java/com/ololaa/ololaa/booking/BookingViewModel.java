@@ -4,6 +4,8 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
+import com.ololaa.ololaa.common.SingleLiveEvent;
+import com.ololaa.ololaa.common.Utils;
 import com.ololaa.ololaa.common.models.Trip;
 import com.ololaa.ololaa.common.requests.FilterTripsRequest;
 
@@ -60,6 +62,8 @@ public class BookingViewModel extends ViewModel {
         trip.setCollectionPointName(collectionPoint.get());
         trip.setDropOffPointName(dropOffPoint.get());
         trip.setId(tripObs.get().getId());
+        trip.setFirstCollectionDate(Utils.formatDate(firstAvailableDate.get()));
+        trip.setLastCollectionDate(Utils.formatDate(lastAvailableDate.get()));
         return trip;
     }
 
@@ -103,5 +107,13 @@ public class BookingViewModel extends ViewModel {
 
     public LiveData<Trip> fetchBooking(Long id) {
         return bookingRepository.fetchBooking(id);
+    }
+
+    public SingleLiveEvent<Boolean> showSuccessDialog() {
+        return bookingRepository.showSuccessDialog;
+    }
+
+    public SingleLiveEvent<Boolean> showProgressDialog() {
+        return bookingRepository.showProgressDialog;
     }
 }

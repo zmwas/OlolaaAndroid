@@ -14,10 +14,12 @@ import java.util.List;
 public class DriversAdapter extends RecyclerView.Adapter<DriverViewHolder> {
     private List<Driver> drivers;
     private Context context;
+    DriverClickedCallback clickedCallback;
 
-    public DriversAdapter(List<Driver> drivers, Context context) {
+    public DriversAdapter(List<Driver> drivers, Context context, DriverClickedCallback clickedCallback) {
         this.drivers = drivers;
         this.context = context;
+        this.clickedCallback = clickedCallback;
     }
 
     @NonNull
@@ -33,6 +35,7 @@ public class DriversAdapter extends RecyclerView.Adapter<DriverViewHolder> {
     public void onBindViewHolder(@NonNull DriverViewHolder driverViewHolder, int i) {
         Driver driver = drivers.get(i);
         driverViewHolder.bind(driver);
+        driverViewHolder.binding.getRoot().setOnClickListener(v -> clickedCallback.onItemClick(i,driver,v));
     }
 
     @Override

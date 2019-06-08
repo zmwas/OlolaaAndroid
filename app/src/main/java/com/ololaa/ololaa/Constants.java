@@ -7,6 +7,8 @@ public class Constants {
     public static final String DRIVER = "DRIVER";
     public static final String TRUCK = "TRUCK";
     public static final String TRIP = "TRIP";
+    public static final Boolean LOGGED_OUT = true;
+    public static final String PLACES_API_KEY= "AIzaSyCiR6Aq4eO5IPsPryz0NGcWABpSQRqTciQ";
     public static final String BROADCAST_MESSAGE_NOTIFICATION_RECEIVED = "com.ololaa.ololaa.NOTIFICATION_RECEIVED";
     public static final String PARAM_NOTIFICATION_INFO = "NotificationContent";
 

@@ -1,6 +1,5 @@
 package com.ololaa.ololaa.booking;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -43,20 +42,24 @@ public class ListBookingsActivity extends AppCompatActivity implements BookingCa
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         viewModel = ViewModelProviders.of(this, factory).get(BookingViewModel.class);
-        viewModel.fetchBookings().observe(this, new Observer<List<Trip>>() {
-            @Override
-            public void onChanged(@Nullable List<Trip> trips) {
-                if (trips != null && trips.size() > 0)
-                    setUpRecyclerView(trips);
-            }
+        viewModel.fetchBookings().observe(this, trips -> {
+            if (trips != null && trips.size() > 0)
+                setUpRecyclerView(trips);
         });
+
+        binding.fab.setOnClickListener(v -> launchBookingActivity());
     }
 
     private void setUpRecyclerView(List<Trip> trips) {
+        binding.bookingEmpty.setVisibility(View.GONE);
         adapter = new BookingsAdapter(trips, this, this);
         recyclerView.setAdapter(adapter);
     }
 
+    public void launchBookingActivity() {
+        Intent intent = new Intent(this, CreateBookingActivity.class);
+        startActivity(intent);
+    }
     @Override
     public void onItemClick(int position, Trip trip, View v) {
         Intent intent = new Intent(this, CargoBookingDetailsActivity.class);

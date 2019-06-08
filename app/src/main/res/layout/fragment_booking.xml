@@ -298,6 +298,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40dp"
                     android:text="@string/call_cargo_mover"
+                    android:textColor="@color/colorPrimary"
                     android:visibility="@{viewModel.callMade?View.GONE:View.VISIBLE}"
 
                     />
@@ -306,6 +307,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/reject_booking"
+                    android:textColor="@color/colorPrimary"
                     android:visibility="@{viewModel.callMade?View.GONE:View.VISIBLE}"
 
                     />
@@ -336,6 +338,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/accept_transport_fee"
+                    android:textColor="@color/colorPrimary"
                     android:visibility="@{viewModel.callMade?View.VISIBLE:View.GONE}"
                     android:layout_gravity="center_horizontal"
                     />

@@ -1,16 +1,16 @@
 package com.ololaa.ololaa.common;
 
 import android.Manifest;
+import android.app.Activity;
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
@@ -42,6 +42,7 @@ public class GPSLiveData extends LiveData<LocationStatus> {
         this.context = context;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onActive() {
         super.onActive();
@@ -53,6 +54,7 @@ public class GPSLiveData extends LiveData<LocationStatus> {
         super.onInactive();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void getLocation() {
         locationStatus = new LocationStatus();
         try {
@@ -70,14 +72,12 @@ public class GPSLiveData extends LiveData<LocationStatus> {
             } else {
 
                 int fineLocationPermission = ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION);
-                int locationPermission = ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION);
 
-                if (fineLocationPermission != PackageManager.PERMISSION_GRANTED && locationPermission != PackageManager.PERMISSION_GRANTED) {
+                if (fineLocationPermission != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions((Activity) context,
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                            1);
 
-                    Intent permissionIntent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                            Uri.fromParts("package", context.getPackageName(), null));
-                    permissionIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(permissionIntent);
                 } else {
                     // First get location from Network Provider
                     if (isNetworkEnabled) {

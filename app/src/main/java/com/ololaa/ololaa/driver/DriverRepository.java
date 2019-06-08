@@ -2,7 +2,9 @@ package com.ololaa.ololaa.driver;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.util.Log;
 
+import com.ololaa.ololaa.common.SingleLiveEvent;
 import com.ololaa.ololaa.common.api.ApiService;
 import com.ololaa.ololaa.common.db.DriverDao;
 import com.ololaa.ololaa.common.models.Driver;
@@ -26,6 +28,9 @@ public class DriverRepository {
     private ExecutorService executorService;
     public MutableLiveData<List<Driver>> drivers = new MutableLiveData<>();
     private Driver driver;
+    public SingleLiveEvent<Boolean> showProgressDialog = new SingleLiveEvent<>();
+    public SingleLiveEvent<Boolean> showSuccessDialog = new SingleLiveEvent<>();
+
 
     @Inject
     public DriverRepository(ApiService apiService, DriverDao driverDao, ExecutorService executorService) {
@@ -35,12 +40,13 @@ public class DriverRepository {
     }
 
     void createDriver(Driver driver, String passportPhoto) {
+        showProgressDialog.setValue(true);
         MediaType image = MediaType.parse("image/*");
         MediaType text = MediaType.parse("text/plain");
 
-        File passport = new File(passportPhoto);
+        File passport = new File(passportPhoto.replace("file://" ,""));
         Long truck = driver.getTruckId() == null ? Long.valueOf(0) : driver.getTruckId();
-
+        Log.d("PATH", passport.getAbsolutePath());
         RequestBody requestBodyPassport = RequestBody.create(image, passport);
         RequestBody name = RequestBody.create(text, driver.getName());
         RequestBody drivingLicense = RequestBody.create(text, driver.getDrivingLicense());
@@ -48,20 +54,25 @@ public class DriverRepository {
         RequestBody idNumber = RequestBody.create(text, driver.getIdNumber());
 
 
-        MultipartBody.Part photo = MultipartBody.Part.createFormData("photo", passport.getName(), requestBodyPassport);
+        MultipartBody.Part photo = MultipartBody.Part.createFormData("file", passport.getName(), requestBodyPassport);
 
         Call<Driver> createDriver = apiService.createDriver(photo, name, drivingLicense, drivingLicenseType, idNumber);
         createDriver.enqueue(new Callback<Driver>() {
             @Override
             public void onResponse(Call<Driver> call, Response<Driver> response) {
                 if (response.isSuccessful()) {
-                    driverDao.insert(response.body());
+                    showProgressDialog.setValue(false);
+                    showSuccessDialog.setValue(true);
+                    executorService.execute(() -> driverDao.insert(response.body()));
+                } else {
+                    showSuccessDialog.setValue(false);
+
                 }
             }
 
             @Override
             public void onFailure(Call<Driver> call, Throwable t) {
-
+                Log.e("ERR", t.getLocalizedMessage());
             }
         });
     }

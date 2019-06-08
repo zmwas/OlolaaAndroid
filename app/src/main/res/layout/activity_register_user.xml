@@ -38,7 +38,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/company_name"
                     android:inputType="text"
                     android:text="@={viewModel.companyName}" />
 
@@ -59,7 +58,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/email"
                     android:inputType="text"
                     android:text="@={viewModel.email}" />
 
@@ -79,9 +77,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/kra_pin"
                     android:inputType="text"
-                    android:text="@{viewModel.kraPin}" />
+                    android:text="@={viewModel.kraPin}" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -100,9 +97,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/phone_number"
                     android:inputType="text"
-                    android:text="@{viewModel.phoneNumber}" />
+                    android:text="@={viewModel.phoneNumber}" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -141,16 +137,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:hint="@string/password"
                     android:text="@={viewModel.password}" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.button.MaterialButton
                 android:layout_width="200dp"
                 android:layout_height="50dp"
+                android:textColor="@color/colorPrimary"
+
                 android:layout_gravity="center_horizontal"
                 android:onClick="@{()->viewModel.signUp()}"
-                android:text="@string/submit" />
+                android:text="SIGN UP" />
         </LinearLayout>
     </ScrollView>
 </layout>

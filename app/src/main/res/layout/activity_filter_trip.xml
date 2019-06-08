@@ -27,13 +27,22 @@
             >
 
 
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/editText"
+            <!--<android.support.v7.widget.AppCompatEditText-->
+                <!--android:id="@+id/editText"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:ems="10"-->
+                <!--android:hint="@string/depature"-->
+                <!--android:text="@={viewModel.collectionPoint}" />-->
+
+            <fragment
+                android:id="@+id/startingLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/depature"
-                android:text="@={viewModel.collectionPoint}" />
+                android:name=
+                    "com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                />
+
         </android.support.design.widget.TextInputLayout>
 
         <TextView
@@ -56,13 +65,23 @@
 
             >
 
-            <EditText
-                android:id="@+id/editText2"
+            <!--<EditText-->
+                <!--android:id="@+id/editText2"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:ems="10"-->
+                <!--android:hint="@string/delivery_point"-->
+
+                <!--android:text="@={viewModel.dropOffPoint}" />-->
+
+            <fragment
+                android:id="@+id/destination"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/delivery_point"
-                android:text="@={viewModel.dropOffPoint}" />
+                android:name=
+                    "com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                />
+
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.button.MaterialButton
@@ -70,6 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"
             android:text="@string/submit" />
 
         <LinearLayout
@@ -79,6 +99,16 @@
             android:orientation="vertical"
             android:visibility="gone"
             >
+
+            <TextView
+                android:id="@+id/results_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="@string/there_are_no_available_trips_in_your_area"
+                />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/filtered_trips_list"

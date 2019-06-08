@@ -4,9 +4,10 @@ import com.ololaa.ololaa.common.SharedPrefsWrapper;
 import com.ololaa.ololaa.common.SingleLiveEvent;
 import com.ololaa.ololaa.common.api.ApiService;
 import com.ololaa.ololaa.common.models.AppUser;
-import com.ololaa.ololaa.common.requests.AuthResponse;
+import com.ololaa.ololaa.common.requests.AuthWrapper;
 import com.ololaa.ololaa.common.requests.CreateUserRequest;
 import com.ololaa.ololaa.common.requests.LoginRequest;
+import com.ololaa.ololaa.common.requests.UpdateFirebaseTokenRequest;
 
 import javax.inject.Inject;
 
@@ -53,20 +54,36 @@ public class UserRepository {
 
     void login(LoginRequest request) {
         showProgressDialog.setValue(true);
-        Call<AuthResponse> login = apiService.login(request);
-        login.enqueue(new Callback<AuthResponse>() {
+        Call<AuthWrapper> login = apiService.login(request);
+        login.enqueue(new Callback<AuthWrapper>() {
             @Override
-            public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
+            public void onResponse(Call<AuthWrapper> call, Response<AuthWrapper> response) {
                 if (response.isSuccessful()) {
                     showProgressDialog.setValue(false);
                     showSuccessDialog.postValue(SUCCESS);
-                    wrapper.putString("token", response.body().getToken());
-                    wrapper.putString("role", response.body().getAppUser().getRoles().get(0));
+                    wrapper.putString("token", response.body().getResponse().getToken());
+                    wrapper.putString("role", response.body().getResponse().getAppUser().getRoles().get(0));
+                    wrapper.putBoolean("logged out", false);
                 }
             }
 
             @Override
-            public void onFailure(Call<AuthResponse> call, Throwable t) {
+            public void onFailure(Call<AuthWrapper> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void updateFirebaseToken(UpdateFirebaseTokenRequest request) {
+        Call<AppUser> updateFirebaseToken = apiService.updateFirebaseToken(request);
+        updateFirebaseToken.enqueue(new Callback<AppUser>() {
+            @Override
+            public void onResponse(Call<AppUser> call, Response<AppUser> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<AppUser> call, Throwable t) {
 
             }
         });

@@ -3,6 +3,7 @@ package com.ololaa.ololaa.trip;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
+import com.ololaa.ololaa.common.SingleLiveEvent;
 import com.ololaa.ololaa.common.models.Trip;
 import com.ololaa.ololaa.common.requests.CreateTripRequest;
 
@@ -111,6 +112,14 @@ public class TripViewModel extends ViewModel {
         telephone.set(trip.getTransporter().getPhoneNumber());
         email.set(trip.getTransporter().getEmail());
         callMade.set(false);
+    }
+
+    public SingleLiveEvent<Boolean> showSuccessDialog() {
+        return tripRepository.showSuccessDialog;
+    }
+
+    public SingleLiveEvent<Boolean> showProgressDialog() {
+        return tripRepository.showProgressDialog;
     }
 
 }

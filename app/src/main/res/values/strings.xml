@@ -67,5 +67,10 @@
     <string name="payments">Payments</string>
     <string name="post_a_trip">Post a Trip</string>
     <string name="book_a_trip">Book a trip</string>
-    <string name="last_collection_date">Last Collection Date</string>
+    <string name="login">Login</string>
+    <string name="progress_message">Loading Request Please Wait</string>
+    <string name="success">Request successful</string>
+    <string name="error">Error. Please try again later</string>
+    <string name="no_bookings_available">No bookings available.</string>
+    <string name="there_are_no_available_trips_in_your_area">There are no available trips in your area.</string>
 </resources>
