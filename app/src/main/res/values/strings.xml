@@ -36,7 +36,7 @@
     <string name="last_available_date">Last Available Date</string>
     <string name="collection_point">Collection Point</string>
     <string name="delivery_point">Delivery Point</string>
-    <string name="unit_weight">Unit Weight</string>
+    <string name="unit_weight">Unit Weight in Kgs</string>
     <string name="number_of_units">Number of Units</string>
     <string name="upload_cargo_photo">Upload Cargo Photo</string>
     <string name="cargo_type">Cargo type:</string>

@@ -90,7 +90,7 @@ public class BookingViewModel extends ViewModel {
 
     public void populateDetails(Trip trip) {
         String price;
-        Double tonnes = trip.getUnits() * trip.getWeight();
+        Double tonnes = trip.getUnits() * trip.getWeight()/1000;
         cargoPictureUrl.set(trip.getCargoPictureUrl());
         cargoType.set(trip.getCargoType());
         weight.set(String.valueOf(trip.getWeight()));

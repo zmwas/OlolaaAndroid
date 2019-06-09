@@ -64,7 +64,7 @@ public class FilterTripsActivity extends BaseActivity implements CreateBookingCa
         findAutoCompletedLocations();
         binding.filter.setOnClickListener(v -> filterTrips());
         observeProgressDialog();
-        observeProgressDialog();
+        observeSuccessDialog();
     }
 
     public void filterTrips() {

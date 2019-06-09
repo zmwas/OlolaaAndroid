@@ -6,13 +6,13 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.ololaa.ololaa.booking.FilterTripsActivity;
 import com.ololaa.ololaa.booking.ListBookingsActivity;
+import com.ololaa.ololaa.common.BaseActivity;
 import com.ololaa.ololaa.common.SharedPreferenceImpl;
 import com.ololaa.ololaa.common.SharedPrefsWrapper;
 import com.ololaa.ololaa.databinding.ActivityMainCargoMoverBinding;
@@ -27,7 +27,7 @@ import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     ActivityMainCargoMoverBinding mainCargoMoverBinding;
     ActivityMainTransporterBinding mainTransporterBinding;
     @Inject

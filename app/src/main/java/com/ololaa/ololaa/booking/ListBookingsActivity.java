@@ -18,7 +18,6 @@ import com.ololaa.ololaa.common.models.Trip;
 import com.ololaa.ololaa.databinding.FragmentBookingsListBinding;
 import com.ololaa.ololaa.trip.TripDetailActivity;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -51,9 +50,14 @@ public class ListBookingsActivity extends AppCompatActivity implements BookingCa
             if (trips != null && trips.size() > 0)
                 setUpRecyclerView(trips);
         });
-
         sharedPrefsWrapper = new SharedPreferenceImpl(getApplicationContext());
         role = sharedPrefsWrapper.getString("role");
+        if (role.equals("customer")) {
+            binding.fab.show();
+            binding.fab.setOnClickListener(v -> launchBookingActivity());
+        } else {
+            binding.fab.hide();
+        }
 
     }
 
@@ -67,17 +71,18 @@ public class ListBookingsActivity extends AppCompatActivity implements BookingCa
         Intent intent = new Intent(this, CreateBookingActivity.class);
         startActivity(intent);
     }
+
     @Override
     public void onItemClick(int position, Trip trip, View v) {
 
         if (role.equals("customer")) {
             Intent intent = new Intent(this, TripDetailActivity.class);
-            intent.putExtra(TRIP, (Serializable) trip);
+            intent.putExtra(TRIP, trip);
             startActivity(intent);
 
         } else {
             Intent intent = new Intent(this, CargoBookingDetailsActivity.class);
-            intent.putExtra(TRIP, (Serializable) trip);
+            intent.putExtra(TRIP, trip);
             startActivity(intent);
         }
     }

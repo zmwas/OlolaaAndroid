@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="trip"
             type="com.ololaa.ololaa.common.models.Trip" />
@@ -10,33 +11,33 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:layout_height="80dp"
         android:elevation="10dp"
+        android:padding="20dp"
+        android:layout_margin="10dp"
         app:cardCornerRadius="5dp"
-
+        app:cardElevation="10dp"
         >
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/trip_points"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:layout_marginBottom="10dp"
+                android:textSize="20sp"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/unit_weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.valueOf(trip.weight)}"
-                android:textSize="20sp"
                 android:paddingEnd="20dp"
+                android:text="@{String.valueOf(trip.weight) +`kgs`}"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/trip_points" />
 
@@ -44,8 +45,8 @@
                 android:id="@+id/number_units"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{String.valueOf(trip.units) + `units`}"
                 android:textSize="20sp"
-                android:text="@{String.valueOf(trip.units)}"
                 app:layout_constraintStart_toEndOf="@id/unit_weight"
                 app:layout_constraintTop_toBottomOf="@id/trip_points"
 

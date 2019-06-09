@@ -65,12 +65,14 @@ public class BookingRepository {
 
                 } else {
                     showSuccessDialog.setValue(false);
+                    showProgressDialog.setValue(false);
 
                 }
             }
 
             @Override
             public void onFailure(Call<Trip> call, Throwable t) {
+                showProgressDialog.setValue(false);
 
             }
         });
@@ -92,6 +94,7 @@ public class BookingRepository {
 
             @Override
             public void onFailure(Call<List<Trip>> call, Throwable t) {
+                showProgressDialog.setValue(false);
 
             }
         });
@@ -114,6 +117,7 @@ public class BookingRepository {
 
             @Override
             public void onFailure(Call<List<Trip>> call, Throwable t) {
+                showProgressDialog.setValue(false);
 
             }
         });
@@ -137,6 +141,7 @@ public class BookingRepository {
 
             @Override
             public void onFailure(Call<Trip> call, Throwable t) {
+                showProgressDialog.setValue(false);
 
             }
         });

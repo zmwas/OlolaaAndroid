@@ -10,7 +10,6 @@ public class SharedPreferenceImpl implements SharedPrefsWrapper {
     private static final String PREFS = "Ololaa_prefs";
 
     /**
-     *
      * @param context - context
      */
     public SharedPreferenceImpl(Context context) {
@@ -18,8 +17,7 @@ public class SharedPreferenceImpl implements SharedPrefsWrapper {
     }
 
     /**
-     *
-     * @param key - key
+     * @param key   - key
      * @param value - value
      */
     @Override
@@ -30,18 +28,16 @@ public class SharedPreferenceImpl implements SharedPrefsWrapper {
     }
 
     /**
-     *
      * @param key - key
      * @return boolean
      */
     @Override
     public boolean getBoolean(String key) {
-        return false;
+        return sharedPreferences.getBoolean(key, false);
     }
 
     /**
-     *
-     * @param key - key
+     * @param key   - key
      * @param value - value
      */
     @Override
@@ -54,7 +50,6 @@ public class SharedPreferenceImpl implements SharedPrefsWrapper {
     }
 
     /**
-     *
      * @param key - key
      * @return string
      */
@@ -65,6 +60,21 @@ public class SharedPreferenceImpl implements SharedPrefsWrapper {
 
 
         return sharedPreferences.getString(key, null);
+    }
+
+    @Override
+    public void putLong(String key, Long value) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(PREFS, 0).edit();
+        editor.putLong(key, value);
+        editor.apply();
+
+    }
+
+    @Override
+    public Long getLong(String key) {
+        sharedPreferences = context.getSharedPreferences(PREFS, 0);
+
+        return sharedPreferences.getLong(key, -1);
     }
 
     /**

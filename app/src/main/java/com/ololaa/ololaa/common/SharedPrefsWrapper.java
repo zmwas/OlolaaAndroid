@@ -30,4 +30,9 @@ public interface SharedPrefsWrapper {
      */
     String getString(String key);
 
+    void putLong(String key, Long value);
+
+    Long getLong(String key);
+
+    void clear();
 }

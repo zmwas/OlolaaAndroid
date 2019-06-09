@@ -9,6 +9,8 @@ import com.ololaa.ololaa.common.requests.CreateUserRequest;
 import com.ololaa.ololaa.common.requests.LoginRequest;
 import com.ololaa.ololaa.common.requests.UpdateFirebaseTokenRequest;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.inject.Inject;
 
 import retrofit2.Call;
@@ -64,6 +66,7 @@ public class UserRepository {
                     wrapper.putString("token", response.body().getResponse().getToken());
                     wrapper.putString("role", response.body().getResponse().getAppUser().getRoles().get(0));
                     wrapper.putBoolean("logged out", false);
+                    wrapper.putLong("expired date", System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(60));
                 }
             }
 
