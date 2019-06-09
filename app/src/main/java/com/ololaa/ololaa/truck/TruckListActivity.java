@@ -43,11 +43,7 @@ public class TruckListActivity extends BaseActivity implements TruckClickedCallb
         recyclerView = binding.truckList;
         recyclerView.setLayoutManager(linearLayoutManager);
         viewModel = ViewModelProviders.of(this, factory).get(TruckViewModel.class);
-        viewModel.fetchTrucks().observe(this, trucks -> {
-            if (trucks != null && trucks.size() > 0) {
-                setUpRecyclerView(trucks);
-            }
-        });
+        loadTrucks();
         binding.fab.setOnClickListener(v -> {
             Intent intent = new Intent(TruckListActivity.this, CreateTruckActivity.class);
             startActivity(intent);
@@ -58,6 +54,15 @@ public class TruckListActivity extends BaseActivity implements TruckClickedCallb
         }
         observeProgressDialog();
         observeSuccessDialog();
+    }
+
+    private void loadTrucks() {
+        viewModel.fetchTrucks().observe(this, trucks -> {
+            if (trucks != null && trucks.size() > 0) {
+                setUpRecyclerView(trucks);
+            }
+        });
+
     }
 
     private void setUpRecyclerView(List<Truck> trucks) {
@@ -82,6 +87,12 @@ public class TruckListActivity extends BaseActivity implements TruckClickedCallb
 
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadTrucks();
     }
 
     public void observeProgressDialog() {

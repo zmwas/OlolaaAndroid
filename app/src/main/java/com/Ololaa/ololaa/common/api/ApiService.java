@@ -23,6 +23,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 public interface ApiService {
     @POST("v1/auth/signup")
@@ -83,6 +84,6 @@ public interface ApiService {
     Call<Trip> updateTripPrice(@Body UpdatePriceRequest request);
 
     @GET("v1/trip/{id}")
-    Call<Trip> fetchBooking(Long id);
+    Call<Trip> fetchBooking(@Path("id")Long id);
 
 }

@@ -34,6 +34,7 @@ public class DriverListActivity extends AppCompatActivity implements DriverClick
     RecyclerView recyclerView;
     DriversAdapter adapter;
     int requestCode;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,16 +44,13 @@ public class DriverListActivity extends AppCompatActivity implements DriverClick
         recyclerView = binding.recyclerview;
         recyclerView.setLayoutManager(linearLayoutManager);
         viewModel = ViewModelProviders.of(this, factory).get(DriverViewModel.class);
-        viewModel.fetchDrivers().observe(this, drivers -> {
-            if (drivers != null && drivers.size() > 0)
-                setUpRecyclerView(drivers);
-        });
+        loadDrivers();
         binding.fab.setOnClickListener(v -> {
             Intent intent = new Intent(DriverListActivity.this, CreateDriverActivity.class);
             startActivity(intent);
 
         });
-        if (getIntent()!=null) {
+        if (getIntent() != null) {
             requestCode = getIntent().getIntExtra("REQUEST_CODE", 0);
         }
 
@@ -64,9 +62,18 @@ public class DriverListActivity extends AppCompatActivity implements DriverClick
         recyclerView.setAdapter(adapter);
     }
 
+    private void loadDrivers() {
+        viewModel.fetchDrivers().observe(this, drivers -> {
+            if (drivers != null && drivers.size() > 0)
+                setUpRecyclerView(drivers);
+        });
+
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
+        loadDrivers();
     }
 
     @Override
@@ -74,13 +81,13 @@ public class DriverListActivity extends AppCompatActivity implements DriverClick
         if (requestCode == 1) {
             Intent intent = new Intent(DriverListActivity.this, CreateTruckActivity.class);
             intent.putExtra(DRIVER, driver);
-            setResult(1,intent);
+            setResult(1, intent);
             finish();//finishing activity
 
-        } else if (requestCode == 2 ) {
+        } else if (requestCode == 2) {
             Intent intent = new Intent(DriverListActivity.this, CreateTripActivity.class);
             intent.putExtra(DRIVER, driver);
-            setResult(RESULT_OK,intent);
+            setResult(RESULT_OK, intent);
             finish();//finishing activity
 
         }

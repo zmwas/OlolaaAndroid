@@ -8,6 +8,7 @@ import com.ololaa.ololaa.databinding.BookingsListItemBinding;
 
 class BookingViewHolder extends RecyclerView.ViewHolder {
     public BookingsListItemBinding binding;
+
     public BookingViewHolder(@NonNull BookingsListItemBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
@@ -15,5 +16,7 @@ class BookingViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(Trip trip) {
         binding.setTrip(trip);
+        binding.tripPoints.setText(String.format("%s to %s", trip.collectionPoint.getName(), trip.dropOffPoint.getName()));
+
     }
 }

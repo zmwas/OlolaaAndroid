@@ -12,8 +12,11 @@ import android.view.View;
 
 import com.ololaa.ololaa.OlolaaViewModelFactory;
 import com.ololaa.ololaa.R;
+import com.ololaa.ololaa.common.SharedPreferenceImpl;
+import com.ololaa.ololaa.common.SharedPrefsWrapper;
 import com.ololaa.ololaa.common.models.Trip;
 import com.ololaa.ololaa.databinding.FragmentBookingsListBinding;
+import com.ololaa.ololaa.trip.TripDetailActivity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -32,6 +35,8 @@ public class ListBookingsActivity extends AppCompatActivity implements BookingCa
     RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private BookingsAdapter adapter;
+    SharedPrefsWrapper sharedPrefsWrapper;
+    String role;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +52,9 @@ public class ListBookingsActivity extends AppCompatActivity implements BookingCa
                 setUpRecyclerView(trips);
         });
 
-        binding.fab.setOnClickListener(v -> launchBookingActivity());
+        sharedPrefsWrapper = new SharedPreferenceImpl(getApplicationContext());
+        role = sharedPrefsWrapper.getString("role");
+
     }
 
     private void setUpRecyclerView(List<Trip> trips) {
@@ -62,8 +69,16 @@ public class ListBookingsActivity extends AppCompatActivity implements BookingCa
     }
     @Override
     public void onItemClick(int position, Trip trip, View v) {
-        Intent intent = new Intent(this, CargoBookingDetailsActivity.class);
-        intent.putExtra(TRIP, (Serializable) trip);
-        startActivity(intent);
+
+        if (role.equals("customer")) {
+            Intent intent = new Intent(this, TripDetailActivity.class);
+            intent.putExtra(TRIP, (Serializable) trip);
+            startActivity(intent);
+
+        } else {
+            Intent intent = new Intent(this, CargoBookingDetailsActivity.class);
+            intent.putExtra(TRIP, (Serializable) trip);
+            startActivity(intent);
+        }
     }
 }

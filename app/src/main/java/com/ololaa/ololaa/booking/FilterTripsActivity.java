@@ -61,7 +61,7 @@ public class FilterTripsActivity extends BaseActivity implements CreateBookingCa
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
 
-
+        findAutoCompletedLocations();
         binding.filter.setOnClickListener(v -> filterTrips());
         observeProgressDialog();
         observeProgressDialog();
@@ -101,6 +101,11 @@ public class FilterTripsActivity extends BaseActivity implements CreateBookingCa
 
     private void setUpRecyclerView(List<Trip> trips) {
         binding.listContainer.setVisibility(View.VISIBLE);
+        if (trips.size() > 0) {
+            binding.resultsEmpty.setVisibility(View.GONE);
+        } else {
+            binding.resultsEmpty.setVisibility(View.VISIBLE);
+        }
         adapter = new FilteredTripsAdapter(trips, this, this);
         recyclerView.setAdapter(adapter);
     }
@@ -137,7 +142,7 @@ public class FilterTripsActivity extends BaseActivity implements CreateBookingCa
         }
 
         AutocompleteSupportFragment startingLocation = (AutocompleteSupportFragment)
-                getSupportFragmentManager().findFragmentById(R.id.collection_point);
+                getSupportFragmentManager().findFragmentById(R.id.startingLocation);
         startingLocation.setHint(getString(R.string.starting_location));
         startingLocation.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME));
 
@@ -146,6 +151,7 @@ public class FilterTripsActivity extends BaseActivity implements CreateBookingCa
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
                 Log.i("TAG", "Place: " + place.getName() + ", " + place.getLatLng());
+                viewModel.collectionPoint.set(place.getName());
             }
 
             @Override
@@ -166,6 +172,7 @@ public class FilterTripsActivity extends BaseActivity implements CreateBookingCa
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
                 Log.i("TAG", "Place: " + place.getName() + ", " + place.getLatLng());
+                viewModel.dropOffPoint.set(place.getName());
             }
 
             @Override

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -26,15 +25,15 @@
                 android:id="@+id/upload_cargo_photo"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
-                android:text="@string/upload_cargo_photo" />
+                android:text="@string/upload_cargo_photo"
+                android:textColor="@color/colorPrimary" />
 
             <ImageView
                 android:id="@+id/cargo_photo"
                 android:layout_width="300dp"
                 android:layout_height="200dp"
-                app:imageUrl="@{viewModel.photo}"
-                android:visibility="@{viewModel.showCargoPhoto? View.VISIBLE : View.GONE}" />
+                android:visibility="@{viewModel.showCargoPhoto? View.VISIBLE : View.GONE}"
+                app:imageUrl="@{viewModel.photo}" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -48,21 +47,19 @@
 
 
                 <!--<android.support.v7.widget.AppCompatEditText-->
-                    <!--android:id="@+id/startingLocation"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:inputType="text"-->
+                <!--android:id="@+id/startingLocation"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:inputType="text"-->
 
-                    <!--android:text="@={viewModel.collectionPoint}" >-->
+                <!--android:text="@={viewModel.collectionPoint}" >-->
                 <!--</android.support.v7.widget.AppCompatEditText>-->
                 <fragment
-                    android:id="@+id/startingLocation"
+                    android:id="@+id/collection_point"
+                    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:name=
-                        "com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-                    />
+                    android:layout_height="wrap_content" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -77,19 +74,17 @@
                 app:errorEnabled="true">
 
                 <!--<android.support.v7.widget.AppCompatEditText-->
-                    <!--android:id="@+id/destination"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:inputType="text"-->
-                    <!--android:text="@={viewModel.dropOffPoint}" />-->
+                <!--android:id="@+id/destination"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:inputType="text"-->
+                <!--android:text="@={viewModel.dropOffPoint}" />-->
                 <fragment
                     android:id="@+id/destination"
+                    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:name=
-                        "com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-                    />
+                    android:layout_height="wrap_content" />
 
 
             </android.support.design.widget.TextInputLayout>
@@ -140,7 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                    android:hint="Cargo Type"
+                android:hint="Cargo Type"
                 android:text="Cargo Type"
                 android:textColorHint="@color/colorPrimary"
                 app:Error="@{viewModel.errorAvailableTonage}"
@@ -206,8 +201,8 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:onClick="@{()->viewModel.createBooking()}"
-                android:textColor="@color/colorPrimary"
-                android:text="@string/submit" />
+                android:text="@string/submit"
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
     </ScrollView>
 </layout>

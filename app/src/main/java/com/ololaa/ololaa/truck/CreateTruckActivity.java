@@ -144,6 +144,10 @@ public class CreateTruckActivity extends BaseActivity {
             path = "file://" + Environment.getExternalStorageDirectory() + "/" + split[1];
 
             viewModel.insuranceSticker.set(path);
+        } else if (requestCode ==3&& resultCode == 1) {
+            Driver driver = (Driver) data.getSerializableExtra(DRIVER);
+            viewModel.driver.set(driver.getName());
+            viewModel.driverId.set(driver.getId());
         }
 
     }

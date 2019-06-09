@@ -7,7 +7,9 @@ import com.ololaa.ololaa.common.SingleLiveEvent;
 import com.ololaa.ololaa.common.models.Trip;
 import com.ololaa.ololaa.common.requests.CreateTripRequest;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -42,6 +44,7 @@ public class TripViewModel extends ViewModel {
     public ObservableField<String> errorLastAvailableDate = new ObservableField<>();
     public ObservableField<Long> driverId = new ObservableField<>();
     public ObservableField<Long> truckId = new ObservableField<>();
+    public ObservableField<List<String>> pictures = new ObservableField<>();
 
     private TripRepository tripRepository;
 
@@ -75,7 +78,7 @@ public class TripViewModel extends ViewModel {
             errorFirstAvailableDate.set("Cannot be empty");
             return false;
 
-        } else if (lastAvailableDate.get() == null ) {
+        } else if (lastAvailableDate.get() == null) {
             errorLastAvailableDate.set("Cannot be empty");
             return false;
 
@@ -101,6 +104,7 @@ public class TripViewModel extends ViewModel {
     }
 
     void populateDetails(Trip trip) {
+        List<String> urls = new ArrayList<>();
         transporter.set(trip.getTransporter().getCompanyName());
         truckType.set(trip.getTruck().getTruckType());
         tonage.set(String.valueOf(trip.getAvailableTonage()));
@@ -112,6 +116,10 @@ public class TripViewModel extends ViewModel {
         telephone.set(trip.getTransporter().getPhoneNumber());
         email.set(trip.getTransporter().getEmail());
         callMade.set(false);
+        urls.add(trip.getTruck().getPhotoUrl());
+        urls.add(trip.getTruck().getInsuranceSticker());
+        urls.add(trip.getDriver().getPassPortPhotoUrl());
+        pictures.set(urls);
     }
 
     public SingleLiveEvent<Boolean> showSuccessDialog() {

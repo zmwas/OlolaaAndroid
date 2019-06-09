@@ -33,7 +33,7 @@ import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
 
-import static com.google.android.libraries.places.api.model.Place.*;
+import static com.google.android.libraries.places.api.model.Place.Field;
 import static com.ololaa.ololaa.Constants.DRIVER;
 import static com.ololaa.ololaa.Constants.PLACES_API_KEY;
 import static com.ololaa.ololaa.Constants.TRUCK;
@@ -168,6 +168,7 @@ public class CreateTripActivity extends BaseActivity implements DatePickerFragme
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
                 Log.i("TAG", "Place: " + place.getName() + ", " + place.getLatLng());
+                viewModel.startingLocation.set(place.getName());
             }
 
             @Override
@@ -187,6 +188,7 @@ public class CreateTripActivity extends BaseActivity implements DatePickerFragme
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
                 Log.i("TAG", "Place: " + place.getName() + ", " + place.getLatLng());
+                viewModel.destination.set(place.getName());
             }
 
             @Override

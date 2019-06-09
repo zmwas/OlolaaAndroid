@@ -12,7 +12,7 @@
         android:visibility="visible"
         android:textStyle="bold"
         android:textSize="18sp"
-        android:text="You have not yet added ."
+        android:text="@string/you_have_not_yet_added_drivers"
         />
 
     <android.support.v7.widget.RecyclerView

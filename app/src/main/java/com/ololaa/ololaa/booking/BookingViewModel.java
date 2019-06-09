@@ -75,8 +75,8 @@ public class BookingViewModel extends ViewModel {
         FilterTripsRequest request = new FilterTripsRequest();
         request.setCollectionPoint(collectionPoint.get());
         request.setDropOffPoint(dropOffPoint.get());
-        request.setLatitude(latitude.get());
-        request.setLongitude(longitude.get());
+        request.setLatitude(-0.7839);
+        request.setLongitude(37.0400);
         return request;
     }
 
@@ -89,6 +89,7 @@ public class BookingViewModel extends ViewModel {
     }
 
     public void populateDetails(Trip trip) {
+        String price;
         Double tonnes = trip.getUnits() * trip.getWeight();
         cargoPictureUrl.set(trip.getCargoPictureUrl());
         cargoType.set(trip.getCargoType());
@@ -101,8 +102,14 @@ public class BookingViewModel extends ViewModel {
         lastCollectionDate.set(trip.getLastCollectionDate());
         cargoMover.set(trip.getCargoMover().getCompanyName());
         telephone.set(trip.getCargoMover().getPhoneNumber());
+        idNumber.set(trip.getCargoMover().getKraPin());
         email.set(trip.getCargoMover().getEmail());
-        agreedPrice.set(String.valueOf(trip.getTransportFees()));
+        if (trip.getTransportFees() == null) {
+            price = "";
+        } else {
+            price = String.valueOf(trip.getTransportFees());
+        }
+        agreedPrice.set(price);
     }
 
     public LiveData<Trip> fetchBooking(Long id) {

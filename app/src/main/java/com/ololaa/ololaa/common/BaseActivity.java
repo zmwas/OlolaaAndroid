@@ -26,6 +26,8 @@ public class BaseActivity extends AppCompatActivity {
         });
         builder.setMessage(message);
         AlertDialog dialog = builder.create();
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.colorPrimary));
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorPrimary));
         dialog.show();
     }
 

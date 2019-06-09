@@ -73,4 +73,5 @@
     <string name="error">Error. Please try again later</string>
     <string name="no_bookings_available">No bookings available.</string>
     <string name="there_are_no_available_trips_in_your_area">There are no available trips in your area.</string>
+    <string name="you_have_not_yet_added_drivers">You have not yet added drivers.</string>
 </resources>

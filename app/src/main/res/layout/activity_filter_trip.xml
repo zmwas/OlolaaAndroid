@@ -104,7 +104,6 @@
                 android:id="@+id/results_empty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:text="@string/there_are_no_available_trips_in_your_area"

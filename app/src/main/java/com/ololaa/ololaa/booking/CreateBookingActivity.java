@@ -182,6 +182,7 @@ public class CreateBookingActivity extends BaseActivity implements DatePickerFra
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
                 Log.i("TAG", "Place: " + place.getName() + ", " + place.getLatLng());
+                viewModel.collectionPoint.set(place.getName());
             }
 
             @Override
@@ -202,6 +203,7 @@ public class CreateBookingActivity extends BaseActivity implements DatePickerFra
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
                 Log.i("TAG", "Place: " + place.getName() + ", " + place.getLatLng());
+                viewModel.dropOffPoint.set(place.getName());
             }
 
             @Override
