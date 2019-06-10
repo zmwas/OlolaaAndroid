@@ -10,10 +10,10 @@ import java.util.List;
 
 @Dao
 public interface BaseDao<T> {
-    @Insert(onConflict = OnConflictStrategy.FAIL)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<T> objects);
 
-    @Insert(onConflict = OnConflictStrategy.FAIL)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insert(T object);
 
     @Update

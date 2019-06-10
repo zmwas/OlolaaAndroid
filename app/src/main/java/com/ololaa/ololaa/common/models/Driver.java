@@ -4,11 +4,12 @@ package com.ololaa.ololaa.common.models;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.io.Serializable;
 
-@Entity
+@Entity(indices = {@Index(value = "id", unique = true)})
 public class Driver implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id")

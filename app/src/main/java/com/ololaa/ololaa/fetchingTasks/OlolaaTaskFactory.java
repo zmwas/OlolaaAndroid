@@ -28,14 +28,15 @@ public class OlolaaTaskFactory implements PendingTasksFactory {
     public PendingTask getTask(String tag) {
         PendingTask task = null;
         switch (tag) {
-            case FETCH_DRIVERS:
-                task = FetchDriversTask.getInstance(apiService, driverDao);
-                break;
             case FETCH_TRUCKS:
                 task = FetchTrucksTask.getInstance(apiService, truckDao);
                 break;
+            case FETCH_DRIVERS:
+                task = FetchDriversTask.getInstance(apiService, driverDao);
+                break;
             case FETCH_TRIPS:
                 task = FetchTripsTask.getInstance(apiService, tripDao);
+                break;
         }
         return task;
     }

@@ -30,7 +30,6 @@ public class OlolaaApp extends Application implements HasActivityInjector, HasSu
         super.onCreate();
         DaggerAppComponent.builder().application(this).build().inject(this);
         Wendy.init(this, factory);
-
     }
 
     @Override

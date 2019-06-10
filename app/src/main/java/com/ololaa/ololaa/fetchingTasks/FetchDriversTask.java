@@ -26,7 +26,7 @@ public class FetchDriversTask extends PendingTask {
 
     public static FetchDriversTask getInstance(ApiService apiService, DriverDao driverDao) {
         if (instance == null) {
-            instance = new FetchDriversTask(false, "1", "1", FETCH_DRIVERS);
+            instance = new FetchDriversTask(false, "2", "2", FETCH_DRIVERS);
             instance.apiService = apiService;
             instance.driverDao = driverDao;
         }

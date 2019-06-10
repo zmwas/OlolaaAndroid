@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.levibostian.wendy.service.Wendy;
 import com.ololaa.ololaa.booking.FilterTripsActivity;
 import com.ololaa.ololaa.booking.ListBookingsActivity;
 import com.ololaa.ololaa.common.BaseActivity;
@@ -18,6 +19,9 @@ import com.ololaa.ololaa.common.SharedPrefsWrapper;
 import com.ololaa.ololaa.databinding.ActivityMainCargoMoverBinding;
 import com.ololaa.ololaa.databinding.ActivityMainTransporterBinding;
 import com.ololaa.ololaa.driver.DriverListActivity;
+import com.ololaa.ololaa.fetchingTasks.FetchDriversTask;
+import com.ololaa.ololaa.fetchingTasks.FetchTrucksTask;
+import com.ololaa.ololaa.fetchingTasks.OlolaaTaskFactory;
 import com.ololaa.ololaa.trip.CreateTripActivity;
 import com.ololaa.ololaa.truck.TruckListActivity;
 import com.ololaa.ololaa.user.LoginActivity;
@@ -26,6 +30,9 @@ import com.ololaa.ololaa.user.UserViewModel;
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
+
+import static com.ololaa.ololaa.Constants.FETCH_DRIVERS;
+import static com.ololaa.ololaa.Constants.FETCH_TRUCKS;
 
 public class MainActivity extends BaseActivity {
     ActivityMainCargoMoverBinding mainCargoMoverBinding;
@@ -52,13 +59,19 @@ public class MainActivity extends BaseActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
-
+        OlolaaApp app = (OlolaaApp) getApplication();
+        OlolaaTaskFactory ololaaTaskFactory = app.getFactory();
         if (role.equals("customer")) {
             mainCargoMoverBinding = DataBindingUtil.setContentView(this, R.layout.activity_main_cargo_mover);
             bindCargoListeners();
         } else {
             mainTransporterBinding = DataBindingUtil.setContentView(this, R.layout.activity_main_transporter);
             bindListeners();
+            FetchTrucksTask fetchTrucksTask = (FetchTrucksTask) ololaaTaskFactory.getTask(FETCH_TRUCKS);
+            FetchDriversTask fetchDriversTask = (FetchDriversTask) ololaaTaskFactory.getTask(FETCH_DRIVERS);
+            Wendy.sharedInstance().addTask(fetchDriversTask,true);
+            Wendy.sharedInstance().addTask(fetchTrucksTask, true);
+            Wendy.sharedInstance().runTasks(null);
         }
 
 

@@ -18,7 +18,7 @@ android {
         }
 
         release {
-            buildConfigField "String", "BASE_URL", '"/"'
+            buildConfigField "String", "BASE_URL", '\"http://165.227.155.220:8019/api/\"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
