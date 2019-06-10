@@ -68,7 +68,7 @@ public class ListBookingsActivity extends AppCompatActivity implements BookingCa
     }
 
     public void launchBookingActivity() {
-        Intent intent = new Intent(this, CreateBookingActivity.class);
+        Intent intent = new Intent(this, FilterTripsActivity.class);
         startActivity(intent);
     }
 

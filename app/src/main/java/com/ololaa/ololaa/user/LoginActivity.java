@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.ololaa.ololaa.Constants;
 import com.ololaa.ololaa.MainActivity;
 import com.ololaa.ololaa.OlolaaViewModelFactory;
 import com.ololaa.ololaa.R;
+import com.ololaa.ololaa.common.BaseActivity;
 import com.ololaa.ololaa.common.SharedPreferenceImpl;
 import com.ololaa.ololaa.common.SharedPrefsWrapper;
 import com.ololaa.ololaa.databinding.ActivityLoginUserBinding;
@@ -21,7 +21,7 @@ import dagger.android.AndroidInjection;
 
 import static com.ololaa.ololaa.Constants.Messages.SUCCESS;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     ActivityLoginUserBinding binding;
     @Inject
     OlolaaViewModelFactory factory;
@@ -43,12 +43,10 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, RegisterUserActivity.class);
                 startActivity(intent);
             });
-            viewModel.showSuccessDialog().observe(this, response -> {
-                if (response.equals(SUCCESS)) {
-                    login();
-                }
-            });
+            observeProgressDialog();
+            observeSuccessDialog();
         }
+
     }
 
     @Override
@@ -72,6 +70,24 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
 
+    }
+
+    public void observeProgressDialog() {
+        viewModel.showProgressDialog().observe(this, this::onChanged);
+    }
+
+
+    public void observeSuccessDialog() {
+        viewModel.showSuccessDialog().observe(this, isSuccess -> {
+            if (isSuccess != null) {
+                if (isSuccess.equals(SUCCESS)) {
+                    login();
+                } else {
+                    hideProgressDialog();
+                    showSuccessDialog(getString(R.string.error));
+                }
+            }
+        });
     }
 
 }

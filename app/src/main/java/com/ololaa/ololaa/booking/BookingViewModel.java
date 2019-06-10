@@ -1,6 +1,7 @@
 package com.ololaa.ololaa.booking;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
@@ -9,6 +10,7 @@ import com.ololaa.ololaa.common.Utils;
 import com.ololaa.ololaa.common.models.Trip;
 import com.ololaa.ololaa.common.requests.FilterTripsRequest;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -75,13 +77,20 @@ public class BookingViewModel extends ViewModel {
         FilterTripsRequest request = new FilterTripsRequest();
         request.setCollectionPoint(collectionPoint.get());
         request.setDropOffPoint(dropOffPoint.get());
-        request.setLatitude(-0.7839);
-        request.setLongitude(37.0400);
+        request.setLatitude(latitude.get());
+        request.setLongitude(longitude.get());
         return request;
     }
 
     public LiveData<List<Trip>> filterTrips() {
-        return bookingRepository.filterTrips(request());
+        List<Trip>  trips = new ArrayList<>();
+        MutableLiveData<List<Trip>> listMutableLiveData = new MutableLiveData<>();
+        listMutableLiveData.postValue(trips);
+        if (collectionPoint.get()!=null && dropOffPoint.get()!=null) {
+            return bookingRepository.filterTrips(request());
+        } else  {
+            return listMutableLiveData;
+        }
     }
 
     public LiveData<List<Trip>> fetchBookings() {

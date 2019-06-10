@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
+import com.ololaa.ololaa.common.SingleLiveEvent;
 import com.ololaa.ololaa.common.requests.CreateUserRequest;
 import com.ololaa.ololaa.common.requests.LoginRequest;
 import com.ololaa.ololaa.common.requests.UpdateFirebaseTokenRequest;
@@ -109,6 +110,10 @@ public class UserViewModel extends ViewModel {
 
     public LiveData<Enum> showSuccessDialog() {
         return userRepository.showSuccessDialog;
+    }
+
+    public SingleLiveEvent<Boolean> showProgressDialog() {
+        return userRepository.showProgressDialog;
     }
 
 }

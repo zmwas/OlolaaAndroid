@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.ololaa.ololaa.OlolaaViewModelFactory;
 import com.ololaa.ololaa.R;
+import com.ololaa.ololaa.common.BaseActivity;
 import com.ololaa.ololaa.databinding.ActivityRegisterUserBinding;
 
 import javax.inject.Inject;
@@ -17,7 +17,7 @@ import dagger.android.AndroidInjection;
 
 import static com.ololaa.ololaa.Constants.Messages.SUCCESS;
 
-public class RegisterUserActivity extends AppCompatActivity {
+public class RegisterUserActivity extends BaseActivity {
     ActivityRegisterUserBinding binding;
     @Inject
     OlolaaViewModelFactory factory;
@@ -31,11 +31,8 @@ public class RegisterUserActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this, factory).get(UserViewModel.class);
         binding.setViewModel(viewModel);
 
-        viewModel.showSuccessDialog().observe(this, response -> {
-            if (response.equals(SUCCESS)) {
-                goToLogin();
-            }
-        });
+        observeSuccessDialog();
+        observeProgressDialog();
 
     }
 
@@ -43,5 +40,23 @@ public class RegisterUserActivity extends AppCompatActivity {
         Intent intent = new Intent(RegisterUserActivity.this, LoginActivity.class);
         startActivity(intent);
     }
+
+    public void observeProgressDialog() {
+        viewModel.showProgressDialog().observe(this, this::onChanged);
+    }
+
+    public void observeSuccessDialog() {
+        viewModel.showSuccessDialog().observe(this, isSuccess -> {
+            if (isSuccess != null) {
+                if (isSuccess.equals(SUCCESS)) {
+                    goToLogin();
+                } else {
+                    hideProgressDialog();
+                    showSuccessDialog(getString(R.string.error));
+                }
+            }
+        });
+    }
+
 
 }
