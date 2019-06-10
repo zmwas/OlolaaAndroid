@@ -17,8 +17,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.ololaa.ololaa.Constants.EXPIRED_DATE;
+import static com.ololaa.ololaa.Constants.LOGGED_OUT;
 import static com.ololaa.ololaa.Constants.Messages.GENERAL_ERROR;
 import static com.ololaa.ololaa.Constants.Messages.SUCCESS;
+import static com.ololaa.ololaa.Constants.ROLE;
+import static com.ololaa.ololaa.Constants.TOKEN;
 
 public class UserRepository {
     private ApiService apiService;
@@ -63,10 +67,10 @@ public class UserRepository {
                 if (response.isSuccessful()) {
                     showProgressDialog.setValue(false);
                     showSuccessDialog.postValue(SUCCESS);
-                    wrapper.putString("token", response.body().getResponse().getToken());
-                    wrapper.putString("role", response.body().getResponse().getAppUser().getRoles().get(0));
-                    wrapper.putBoolean("logged out", false);
-                    wrapper.putLong("expired date", System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(60));
+                    wrapper.putString(TOKEN, response.body().getResponse().getToken());
+                    wrapper.putString(ROLE, response.body().getResponse().getAppUser().getRoles().get(0));
+                    wrapper.putBoolean(LOGGED_OUT, false);
+                    wrapper.putLong(EXPIRED_DATE, System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(60));
                 }
             }
 

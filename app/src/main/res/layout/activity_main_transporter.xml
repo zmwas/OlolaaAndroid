@@ -38,10 +38,24 @@
 
                     >
 
-                    <TextView
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/post_a_trip" />
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/post_trip_image"
+                            android:layout_width="150dp"
+                            android:layout_height="120dp"
+                            android:src="@drawable/trip"
+                            />
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="30dp"
+                            android:text="@string/post_a_trip"
+                            android:layout_below="@+id/post_trip_image"
+                            />
+                    </RelativeLayout>
                 </android.support.v7.widget.CardView>
 
 
@@ -58,10 +72,24 @@
 
                     >
 
-                    <TextView
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/bookings" />
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/booking_image"
+                            android:layout_width="150dp"
+                            android:layout_height="120dp"
+
+                            android:src="@drawable/bookings"/>
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="30dp"
+                            android:text="@string/bookings"
+                            android:layout_below="@+id/booking_image"
+                            />
+                    </RelativeLayout>
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
@@ -77,10 +105,24 @@
 
                     >
 
-                    <TextView
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/fleet" />
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/fleet_image"
+                            android:layout_width="150dp"
+                            android:layout_height="120dp"
+                            android:src="@drawable/truck"
+                            />
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="30dp"
+                            android:text="@string/fleet"
+                            android:layout_below="@+id/fleet_image"
+                            />
+                    </RelativeLayout>
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
@@ -96,10 +138,24 @@
 
                     >
 
-                    <TextView
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/drivers" />
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/drivers_image"
+                            android:layout_width="150dp"
+                            android:layout_height="120dp"
+                            android:src="@drawable/driver"
+                            />
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="30dp"
+                            android:text="@string/drivers"
+                            android:layout_below="@+id/drivers_image"
+                            />
+                    </RelativeLayout>
                 </android.support.v7.widget.CardView>
 
             </GridLayout>

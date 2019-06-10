@@ -10,6 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import com.ololaa.ololaa.R;
 import com.ololaa.ololaa.user.LoginActivity;
 
+import static com.ololaa.ololaa.Constants.EXPIRED_DATE;
+import static com.ololaa.ololaa.Constants.LOGGED_OUT;
+
 public class BaseActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     SharedPrefsWrapper sharedPrefsWrapper;
@@ -20,9 +23,19 @@ public class BaseActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         sharedPrefsWrapper = new SharedPreferenceImpl(getApplicationContext());
 
-        if (sharedPrefsWrapper.getLong("expired date") < System.currentTimeMillis()) {
+        checkToken();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkToken();
+    }
+
+    void checkToken() {
+        if (sharedPrefsWrapper.getLong(EXPIRED_DATE) < System.currentTimeMillis()) {
             sharedPrefsWrapper.clear();
-            sharedPrefsWrapper.putBoolean("logged out", true);
+            sharedPrefsWrapper.putBoolean(LOGGED_OUT, true);
             logOut();
         }
 

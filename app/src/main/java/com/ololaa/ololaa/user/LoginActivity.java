@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.ololaa.ololaa.Constants;
 import com.ololaa.ololaa.MainActivity;
 import com.ololaa.ololaa.OlolaaViewModelFactory;
 import com.ololaa.ololaa.R;
@@ -32,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         AndroidInjection.inject(this);
         sharedPrefsWrapper = new SharedPreferenceImpl(getApplicationContext());
-        if (sharedPrefsWrapper.getString("token") != null && !sharedPrefsWrapper.getBoolean("logged out")) {
+        if (sharedPrefsWrapper.getString(Constants.TOKEN) != null && !sharedPrefsWrapper.getBoolean(Constants.LOGGED_OUT)) {
             login();
         } else {
             binding = DataBindingUtil.setContentView(this, R.layout.activity_login_user);
@@ -47,6 +48,23 @@ public class LoginActivity extends AppCompatActivity {
                     login();
                 }
             });
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (sharedPrefsWrapper.getString(Constants.TOKEN) != null && !sharedPrefsWrapper.getBoolean(Constants.LOGGED_OUT)) {
+            login();
+        } else {
+            binding = DataBindingUtil.setContentView(this, R.layout.activity_login_user);
+            viewModel = ViewModelProviders.of(this, factory).get(UserViewModel.class);
+            binding.setViewModel(viewModel);
+            binding.signInPrompt.setOnClickListener(v -> {
+                Intent intent = new Intent(LoginActivity.this, RegisterUserActivity.class);
+                startActivity(intent);
+            });
+
         }
     }
 

@@ -19,6 +19,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.ololaa.ololaa.Constants.TOKEN;
+
 @Module
 public class ApiModule {
 
@@ -30,7 +32,7 @@ public class ApiModule {
 
         Interceptor authInterceptor = chain -> {
             String authToken = "";
-            authToken = wrapper.getString("token");
+            authToken = wrapper.getString(TOKEN);
             Request request = chain.request();
             Request newRequest = null;
             HttpUrl url = request.url();
