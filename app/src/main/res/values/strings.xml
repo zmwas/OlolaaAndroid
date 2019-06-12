@@ -44,7 +44,7 @@
     <string name="cargo_mover">Cargo Mover:</string>
     <string name="phone_number">Phone Number:</string>
     <string name="call_cargo_mover">Call Cargo Mover</string>
-    <string name="reject_booking">Reject Booking</string>
+    <string name="reject_booking">Reject \n Booking</string>
     <string name="enter_agreed_price">Enter agreed price</string>
     <string name="accept_transport_fee">Accept Transport Fee</string>
     <string name="transporter">Transporter:</string>
