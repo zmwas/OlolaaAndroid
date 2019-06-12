@@ -22,6 +22,9 @@ public class TruckViewModel extends ViewModel {
     public ObservableField<Boolean> trailer = new ObservableField<>();
     public ObservableField<String> ntsa = new ObservableField<>();
     public ObservableField<String> insuranceSticker = new ObservableField<>();
+    public ObservableField<String> errorinsuranceSticker = new ObservableField<>();
+    public ObservableField<String> errortruckPhoto = new ObservableField<>();
+
     public ObservableField<String> truckPhoto = new ObservableField<>();
     public ObservableField<String> truckType = new ObservableField<>();
     public ObservableField<String> errorTruckType = new ObservableField<>();
@@ -59,6 +62,12 @@ public class TruckViewModel extends ViewModel {
             return false;
         } else if (ntsa.get() == null || ntsa.get().isEmpty()) {
             errorNtsa.set("Cannot be empty");
+            return false;
+        } else if (truckPhoto.get() == null || truckPhoto.get().isEmpty()) {
+            errortruckPhoto.set("Image is missing");
+            return false;
+        } else if (insuranceSticker.get() == null || insuranceSticker.get().isEmpty()) {
+            errorinsuranceSticker.set("Image is missing");
             return false;
         }
         return true;

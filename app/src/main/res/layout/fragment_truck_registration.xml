@@ -107,7 +107,13 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
                 android:text="@string/truck_photo" />
-
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimary"
+                app:Error="@{viewModel.errortruckPhoto}"
+                app:errorEnabled="true"
+                >
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/truck_photo"
                 android:layout_width="300dp"
@@ -115,7 +121,7 @@
                 android:layout_marginBottom="8dp"
                 android:visibility="@{viewModel.truckPhoto.get() == null? View.GONE : View.VISIBLE}"
                 app:imageUrl="@{viewModel.truckPhoto}" />
-
+            </android.support.design.widget.TextInputLayout>
             <android.support.design.button.MaterialButton
                 android:id="@+id/upload_insurance_sticker"
                 android:layout_width="200dp"
@@ -123,6 +129,13 @@
                 android:textColor="@color/colorPrimary"
                 android:text="@string/insurance_sticker" />
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimary"
+                app:Error="@{viewModel.errorinsuranceSticker}"
+                app:errorEnabled="true"
+                >
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/insurance_sticker"
                 android:layout_width="300dp"
@@ -130,6 +143,8 @@
                 android:layout_marginBottom="8dp"
                 android:visibility="@{viewModel.insuranceSticker == null? View.GONE : View.VISIBLE}"
                 app:imageUrl="@{viewModel.insuranceSticker}" />
+            </android.support.design.widget.TextInputLayout>
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"

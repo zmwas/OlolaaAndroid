@@ -48,6 +48,7 @@ public class BookingViewModel extends ViewModel {
     public ObservableField<Double> latitude = new ObservableField<>();
     public ObservableField<String> firstCollectionDate = new ObservableField<>();
     public ObservableField<String> lastCollectionDate = new ObservableField<>();
+    public ObservableField<String> errorPhoto = new ObservableField<>();
 
     private BookingRepository bookingRepository;
 
@@ -69,8 +70,38 @@ public class BookingViewModel extends ViewModel {
         return trip;
     }
 
+    public boolean isDataValid() {
+        if (cargoType.get() == null || cargoType.get().isEmpty()) {
+            errorCargoType.set("Cannot be empty");
+            return false;
+        } else if (numberUnits.get() == null || numberUnits.get().isEmpty()) {
+            errorNumberUnits.set("Cannot be empty");
+            return false;
+        } else if (weight.get() == null || weight.get().isEmpty()) {
+            errorWeight.set("Cannot be empty");
+            return false;
+        } else if (collectionPoint.get() == null || collectionPoint.get().isEmpty()) {
+            errorCollectionPoint.set("Cannot be empty");
+            return false;
+        } else if (dropOffPoint.get() == null || dropOffPoint.get().isEmpty()) {
+            errorDropOffPoint.set("Cannot be empty");
+            return false;
+        } else if (firstAvailableDate.get() == null ) {
+            errorFirstAvailableDate.set("Cannot be empty");
+            return false;
+        } else if (lastAvailableDate.get()==null){
+            errorLastAvailableDate.set("Cannot be empty");
+            return false;
+        } else if (photo.get() == null || photo.get().isEmpty()) {
+            errorPhoto.set("Image is missing");
+            return false;
+        }
+        return true;
+    }
+
     public void createBooking() {
-        bookingRepository.createBooking(trip(), photo.get());
+        if (isDataValid())
+            bookingRepository.createBooking(trip(), photo.get());
     }
 
     private FilterTripsRequest request() {

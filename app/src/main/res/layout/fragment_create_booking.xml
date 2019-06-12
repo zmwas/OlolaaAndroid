@@ -28,12 +28,20 @@
                 android:text="@string/upload_cargo_photo"
                 android:textColor="@color/colorPrimary" />
 
-            <ImageView
-                android:id="@+id/cargo_photo"
-                android:layout_width="300dp"
-                android:layout_height="200dp"
-                android:visibility="@{viewModel.showCargoPhoto? View.VISIBLE : View.GONE}"
-                app:imageUrl="@{viewModel.photo}" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimary"
+                app:Error="@{viewModel.errorPhoto}"
+                app:errorEnabled="true">
+
+                <ImageView
+                    android:id="@+id/cargo_photo"
+                    android:layout_width="300dp"
+                    android:layout_height="200dp"
+                    android:visibility="@{viewModel.showCargoPhoto? View.VISIBLE : View.GONE}"
+                    app:imageUrl="@{viewModel.photo}" />
+            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"

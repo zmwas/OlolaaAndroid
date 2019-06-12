@@ -25,6 +25,8 @@ public class DriverViewModel extends ViewModel {
     public ObservableField<String> idNumber = new ObservableField<>();
     public ObservableField<String> errorIdNumber = new ObservableField<>();
     public ObservableField<String> passportPhoto = new ObservableField<>();
+    public ObservableField<String> errorpassportPhoto = new ObservableField<>();
+
     public MutableLiveData<Boolean> showPassportPhoto = new MutableLiveData<>();
     public ObservableField<Long> truckId = new ObservableField<>();
 
@@ -59,7 +61,10 @@ public class DriverViewModel extends ViewModel {
             errorName.set("Cannot be empty");
             return false;
         } else if (drivingLicenseType == null) {
-            errorDrivingLicenseType.set("Cannot be null");
+            errorDrivingLicenseType.set("Cannot be empty");
+            return false;
+        } else if (passportPhoto.get()==null|| passportPhoto.get().isEmpty() ) {
+            errorpassportPhoto.set("Image is missing");
             return false;
         }
         return true;
