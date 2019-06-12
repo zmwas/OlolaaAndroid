@@ -49,31 +49,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:hint="@string/truck_allocated"
-                android:labelFor="@+id/truck"
-                android:text="@string/truck_allocated"
-                android:textColorHint="@color/colorPrimary"
-                app:Error="@{viewModel.errorTruck}"
-                app:errorEnabled="false">
-
-                <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/truck"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:longClickable="false"
-
-                    android:text="@{viewModel.truck}" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:hint="@string/driving_license_number"
                 android:text="@string/driving_license_number"
                 android:textColorHint="@color/colorPrimary"

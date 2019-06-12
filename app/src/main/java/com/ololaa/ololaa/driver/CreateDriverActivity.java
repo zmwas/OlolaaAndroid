@@ -46,10 +46,6 @@ public class CreateDriverActivity extends BaseActivity {
             uploadPassportPhoto();
         });
 
-        binding.truck.setOnClickListener(v -> {
-            fetchTruck();
-        });
-
         observeProgressDialog();
         observeSuccessDialog();
 

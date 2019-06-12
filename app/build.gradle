@@ -1,3 +1,10 @@
+tasks.whenTaskAdded { task ->
+    if (task.name.equals("lintVitalRelease")) {
+        task.enabled = false
+    }
+}
+
+
 apply plugin: 'com.android.application'
 
 android {
@@ -33,6 +40,8 @@ android {
         sourceCompatibility 1.8
     }
 }
+
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
