@@ -1,6 +1,6 @@
 <resources>
     <string-array name="roles">
-        <item>--Select Role--</item>
+        <item>--Sign up as a--</item>
         <item>Customer</item>
         <item>Transporter</item>
     </string-array>
